@@ -1,0 +1,6 @@
+﻿@model List<serviceGroup>;
+@foreach (var p in Model)
+{
+    <li><a href="/Service/request?id=@p.serviceGroupId">@p.serviceGroupName</a></li>
+
+}

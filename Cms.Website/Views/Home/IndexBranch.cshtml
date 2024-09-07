@@ -1,0 +1,217 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@section Scripts{
+
+    <script src="~/frontend/js/controller/home.js" asp-append-version="true"></script>
+    <script>
+        var homeObj = new homeController();
+        homeObj.initialize();
+    </script>
+}
+<section class="main-slider">
+    <div id="owl-home-main-slider" class="owl-home-main-slider">
+        <div class="owl-item">
+            <div class="item">
+                <div class="item-image" style="background-image: url('~/frontend/images/banner/1.jpg');">
+                    @*<div class="bannertxt">
+                            <img src="./images/logo_venus.png" />
+                            <p>Welcome to Venus Nail Bar</p>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+        <div class="owl-item">
+            <div class="item">
+                <div class="item-image" style="background-image: url('~/frontend/images/banner/2.jpg');">
+                    @*<div class="bannertxt">
+                            <img src="./images/logo_venus.png" />
+                            <p>Welcome to Venus Nail Bar</p>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+        @* <div class="owl-item">
+                    <div class="item">
+                        <div class="item-image" style="background-image: url('./frontend/images/banner/slide3.1.jpg');">
+                            @*<div class="bannertxt">
+                                    <img src="./images/logo_venus.png" />
+                                    <p>Welcome to Venus Nail Bar</p>
+                                </div>
+            </div>
+            </div>
+            </div>*@
+    </div>
+</section>
+
+<section class="main homepage">
+    <section class="home-brands">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 home-section-title">
+                    <h3 class="title-type">Welcom to</h3>
+                    <h2>Cute Nail</h2>
+                    <div class="line-bottom-title">
+                        <span class="line-left"></span>
+                        <img src="~/frontend/images/icon/icon-title.png" />
+                        <span class="line-right"></span>
+                    </div>
+                    <h3 class="descript-body text-center">We are dedicated to providing the highest level of clients service and satisfaction. Our team are qualified and knowledgeable professionals who are eager to give you (our clients) an exceptional experience. </h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+  @*  <section class="home-featured-products our_services">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 home-section-title">
+                    <h2>Our Services</h2>
+                    <div class="line-bottom-title">
+                        <span class="line-left"></span>
+                        <img src="~/frontend/images/icon/icon-title.png" />
+                        <span class="line-right"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row product-list">
+                <div id="home-promotion-slider">
+                    @await Component.InvokeAsync("Service")
+                </div>
+            </div>
+
+        </div>
+    </section>*@
+
+
+    <section class="home-collection-banners">
+        <div class="container">
+            <div class="row">
+                @await Component.InvokeAsync("Gallery")
+            </div>
+        </div>
+    </section>
+
+    <section class="home-news blog-content">
+        <div class="container blog-single-item">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 home-section-title">
+                    <h3 class="title-type">News</h3>
+                    <h2>Beauty corner</h2>
+                    <div class="line-bottom-title">
+                        <span class="line-left"></span>
+                        <img src="~/frontend/images/icon/icon-title.png" />
+                        <span class="line-right"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row blog-single-slider">
+                <div id="home-news-slider">
+                    @foreach (var item in Model)
+                    {
+                        var url = "/" + item.SeoAlias + "-" + item.Id + "-" + Context.Request.RouteValues["id"];
+                        <div class="item">
+                            <div class="article-item">
+                                <a href="@url" class="article-img">
+                                    <img src="@item.FullImageUrl" alt="@item.Name">
+                                </a>
+                                <a href="@url" class="article-title">@item.Name</a>
+                                <div class="article-desc">
+                                    @item.Description
+                                </div>
+                                <div class="article-info">
+                                    <div class="article-date">
+                                        <div class="time">@Convert.ToDateTime(item.DateCreated).Day</div>
+                                        <div>
+                                            <span>@Convert.ToDateTime(item.DateCreated).ToString("MMM")</span>
+                                            <span>@Convert.ToDateTime(item.DateCreated).Year</span>
+                                        </div>
+                                    </div>
+                                    <div class="article-cmt">
+                                        @*<span><i class="fa fa-user"></i> Suplo Beauty</span>*@
+                                        @*<span>
+                                                <i class="fa fa-commenting-o" aria-hidden="true"></i> 0 comment
+                                            </span>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="home-policy">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-3 item">
+                    <div class="policy-item">
+                        <div class="icon-policy">
+                            <div class="icon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="content-policy">
+                            <div class="title-police">Book Now</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-6 item">
+                    <div class="policy-item appointments text-center ">
+                        <div class="content-policy ">
+                            <div class="title-police">Appointments & Wall-ins Welcome</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-3 item">
+                    <div class="policy-item">
+                        <div class="icon-policy">
+                            <div class="icon">
+                                <i class="ti-gift"></i>
+                            </div>
+                        </div>
+                        <div class="content-policy">
+                            <div class="title-police">Gift Certificate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</section>
+
+
+@await Component.InvokeAsync("Promotion")
+
+
+<script id="table-template" type="x-tmpl-mustache">
+    <div class="product-item">
+        <div class="product-info ">
+            <div class="product-title">
+                <a href="#">{{Name}}</a>
+            </div>
+        </div>
+        <div class="product-image">
+            <a href="#">
+                <img src="~/frontend/images/ourservice/page-1_img12.jpg" alt="Enhancements"
+                     class="img-thumbnail">
+                <div class="product-overlay"></div>
+            </a>
+        </div>
+        <div class="product-info text-center">
+            <div class="decs clearfix">
+                {{Description}}
+            </div>
+            <a href="#" class="more">Our services</a>
+        </div>
+    </div>
+
+</script>
+
+
+

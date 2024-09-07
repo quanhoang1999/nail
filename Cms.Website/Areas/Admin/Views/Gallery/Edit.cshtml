@@ -1,0 +1,98 @@
+﻿@model GalleryViewModel
+@{
+    ViewData["Title"] = "Gallery";
+}
+@section Styles{
+
+}
+@section Scripts{
+    <script src="~/app/controllers/gallery/edit.js" asp-append-version="true"></script>
+    <script>
+
+        var gallery = new galleryEditController();
+        gallery.initialize();
+    </script>
+
+}
+
+<input type="hidden" id="hid-category-id" value="0" />
+<div class="">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>
+                Gallery
+                <small>
+                    <i class="fa fa-arrow-circle-left"></i>
+                    <a href="/Admin/gallery">Back</a>
+                </small>
+            </h3>
+
+        </div>
+        <div class="col-md-6 text-right">
+
+
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="horizontal-form">
+                        <form class="form-horizontal" role="form" id="frmMaintainance">
+                            <div class="form-group row">
+                                <input type="hidden" id="hidIdM" asp-for="Id" />
+                                <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtNameM" asp-for="Name" class="form-control" id="txtNameM">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="txtDescM" class="col-sm-2 control-label no-padding-right">File type</label>
+                                <div class="col-sm-10">
+                                    <select asp-for="FileType" id="slFileType" class="form-control" asp-items="@(new SelectList(ViewBag.ListFileType,"Id","Name"))"></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" id="blockYoutube" style="display:none">
+                                <label for="txtImageM" class="col-sm-2 control-label no-padding-right">Youtube url</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="fileUrl" asp-for="FileUrl" class="form-control" id="fileUrl">
+                                </div>
+                            </div>
+                            <div class="form-group row" id="blockFile" style="display:none">
+                                <label for="txtImageM" class="col-sm-2 control-label no-padding-right">File Url</label>
+                                <div class="col-sm-6">
+                                    @*<input type="text" name="txtImage" readonly class="form-control" id="txtImage" />*@
+                                    <input type="hidden" id="hdImage" asp-for="FileUrl" />
+                                    <input type="hidden" id="hdFullImage" asp-for="FileFullUrl" />
+                                    <input type="file" id="fileInputImage" style="display:none" />
+                                    <button type="button" id="btnSelectImg" class="btn btn-sm btn-primary">Attach file</button>
+                                    <img width="100" id="image_upload_preview" />
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-2"></div>
+                                <div class="col-sm-10">
+                                    <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+                                    <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

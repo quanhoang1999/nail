@@ -1,0 +1,36 @@
+.promotions {
+  margin-top: 125px; }
+  @media (max-width: 991px) {
+    .promotions {
+      margin-top: 135px; } }
+  @media (max-width: 767px) {
+    .promotions {
+      margin-top: 90px; } }
+  .promotions .title {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Courgette', cursive;
+    font-size: 30pt;
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: #000; }
+    @media (max-width: 992px) {
+      .promotions .title {
+        text-align: center; } }
+  .promotions .list-group-promotion .item {
+    margin-bottom: 30px;
+    text-align: center; }
+    .promotions .list-group-promotion .item .proimg {
+      margin-bottom: 30px; }
+      .promotions .list-group-promotion .item .proimg img {
+        border-radius: 5px;
+        width: 100vh; }
+        @media (max-width: 720px) {
+          .promotions .list-group-promotion .item .proimg img {
+            width: 100%; } }
+    .promotions .list-group-promotion .item a {
+      margin-right: 20px; }
+      .promotions .list-group-promotion .item a:last-child {
+        margin-right: 0; }
+      .promotions .list-group-promotion .item a:hover {
+        text-decoration: none; }

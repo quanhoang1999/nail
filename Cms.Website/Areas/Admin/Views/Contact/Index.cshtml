@@ -1,0 +1,123 @@
+﻿@model ContactViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+}
+@section Scripts{
+
+
+    <environment names="Development">
+
+        <script src="~/app/controllers/contact/index.js" asp-append-version="true"></script>
+        <script>
+            var contact = new ContactController();
+            contact.initialize();</script>
+    </environment>
+    <environment names="Staging,Production">
+        <script>
+            var contact = new contactController();
+            contact.initialize();</script>
+    </environment>
+
+
+}
+<div class="row">
+    <div class="col-md-6">
+        <h1 class="pull-left">
+            Contact
+        </h1>
+
+    </div>
+    <div class="col-md-6 text-right">
+
+     
+    </div>
+</div>
+@*<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+        </ol>
+    </nav>*@
+
+<div class="clearfix"></div>
+<div class="x_panel">
+    <div class="x_content">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <div class="form-group row">
+                            <input type="hidden" id="hidId" asp-for="Id" />
+                            <label for="txtCustomerName" class="col-sm-2 control-label ">Contact name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtName" asp-for="Name" class="form-control" id="txtName">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtCustomerAddress" class="col-sm-2 control-label ">Phone</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtPhone" asp-for="Phone" class="form-control" id="txtPhone" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtCustomerMessage" class="col-sm-2 control-label ">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtEmail" asp-for="Email" class="form-control" id="txtEmail" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtCustomerMessage" class="col-sm-2 control-label ">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtAddress" asp-for="Address" class="form-control" id="txtAddress" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtCustomerMessage" class="col-sm-2 control-label ">Website</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtWebsite" asp-for="Website" class="form-control" id="txtWebsite" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtCustomerMessage" class="col-sm-2 control-label ">Khác</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtOther" asp-for="Other" class="form-control" id="txtOther" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtCustomerMessage" class="col-sm-2 control-label ">Latitude</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtLat" asp-for="Lat" class="form-control" id="txtLat" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtCustomerMessage" class="col-sm-2 control-label ">Longitude</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtLng" asp-for="Lng" class="form-control" id="txtLng" />
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group row">
+                    <div class="col-sm-2 control-label "></div>
+                    <div class="col-sm-10">
+                        <button type="button" id="btnSave" class="btn btn-success">Save changes</button>
+                      
+                        <button type="button" id="btnCancel" class="btn btn-primary">Cancel</button>
+                      
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

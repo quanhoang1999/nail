@@ -1,0 +1,12 @@
+﻿@foreach (var p in Model)
+{
+    <div class="item">
+        <div class="product-buy-click" id="bookingParentService">
+            <img src="@Url.Content(p.DefaultImage)" />
+            <input hidden type="checkbox" data-id="@p.Id" />
+
+        </div>
+        <h3> <i hidden class="ti-check"></i> @p.Name</h3>
+    </div>
+
+}

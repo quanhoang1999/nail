@@ -1,0 +1,60 @@
+﻿.has-error {
+    color: red
+}
+
+.wrapper-loader {
+    display: block;
+    /*height: 400px;*/
+    position: relative;
+    background-color: #ada8a847;
+    position: fixed;
+    z-index: 999;
+    /* height: 2em; */
+    /* width: 3em; */
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.service-nav > ul {
+    width: 300px;
+}
+
+.service-nav:hover > ul {
+    width: 300px;
+}
+
+.service-nav > ul > li {
+    padding: 2px 2px !important;
+}
+
+.service-nav > ul > li a {
+    padding: 0px 0px 8px !important;
+}
+.servicesimg1 {
+    /*margin-bottom: 200px !important;
+    margin-top: 70px;*/
+}
+.f-s-d {
+    font-size: 13px !important;
+}

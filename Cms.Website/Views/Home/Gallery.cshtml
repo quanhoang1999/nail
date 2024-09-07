@@ -1,0 +1,56 @@
+﻿@model PagedResult<GalleryViewModel>
+@{
+    ViewData["Title"] = "Gallery";
+    var modo = Model.Results.FirstOrDefault(f => f.FileType == 1);
+    var lstGallery = Model.Results.Where(f => f.FileType != 1);
+    string url = modo == null ? "" : modo.FileUrl;
+}
+
+@section Scripts{
+    <script type="text/javascript" src="~/frontend/vender/Nivo-Lightbox/nivo-lightbox.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.gallery1').nivoLightbox();
+        });
+    </script>
+}
+
+<section class="main gallery">
+    <div class="container">
+        <div class="col-12">
+            <h2 class="title">Our Gallery:</h2>
+        </div>
+        <div class="col-12 gallery-video">
+            <div class="video">
+                @if (@url != "")
+                {
+                    <iframe width="560" height="315"
+                            src="@url" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+                }
+            </div>
+        </div>
+        <div class="row list-gallery">
+            @foreach (var item in lstGallery)
+            {
+                <div class="col-12 col-md-4 col-lg-4">
+                    <div class="item">
+                        <div class="img gallery1" data-lightbox-gallery="gallery1" href="@item.FileFullUrl"
+                             title="gallery"
+                             style="background: url('@item.FileFullUrl') 50% 49% / cover no-repeat;">
+                            <div class="item-hover">
+                                <div class="mega-hovertitle text-white">@item.Name</div>
+                                <div class="mega-hoverview">
+                                    <i class="ti-zoom-in"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+

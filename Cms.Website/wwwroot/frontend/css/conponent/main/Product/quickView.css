@@ -1,0 +1,65 @@
+.modal-quick-view .modal-content .modal-header {
+  padding: 1rem 1rem 0;
+  border-bottom: 0; }
+  .modal-quick-view .modal-content .modal-header .close:focus {
+    border: none;
+    outline: 0;
+    box-shadow: none; }
+
+.modal-quick-view .modal-content .modal-body {
+  padding: 0rem 1rem 1.2rem; }
+  .modal-quick-view .modal-content .modal-body .product-images .product-gallery {
+    display: block;
+    width: 100%; }
+    .modal-quick-view .modal-content .modal-body .product-images .product-gallery .item {
+      width: 100px; }
+      .modal-quick-view .modal-content .modal-body .product-images .product-gallery .item img {
+        max-width: 100%; }
+    .modal-quick-view .modal-content .modal-body .product-images .product-gallery .owl-controls .owl-pagination {
+      position: absolute;
+      position: absolute;
+      bottom: 0;
+      margin: 0 auto;
+      left: 0;
+      right: 0; }
+    .modal-quick-view .modal-content .modal-body .product-images .product-gallery .owl-controls .owl-buttons .owl-prev, .modal-quick-view .modal-content .modal-body .product-images .product-gallery .owl-controls .owl-buttons .owl-next {
+      position: absolute;
+      top: calc(50% - 30px);
+      color: #871919;
+      font-size: 60px;
+      line-height: 60px;
+      padding: 0px;
+      margin: 0px;
+      background: none; }
+    .modal-quick-view .modal-content .modal-body .product-images .product-gallery .owl-controls .owl-buttons .owl-prev {
+      left: 30px; }
+    .modal-quick-view .modal-content .modal-body .product-images .product-gallery .owl-controls .owl-buttons .owl-next {
+      right: 30px; }
+  .modal-quick-view .modal-content .modal-body .product-info .prpduct-title {
+    color: #333333;
+    font-size: 1rem; }
+  .modal-quick-view .modal-content .modal-body .product-info .product-more-info {
+    margin-bottom: 0.5rem; }
+  .modal-quick-view .modal-content .modal-body .product-info .product-price-wrapper {
+    margin-bottom: 10px; }
+    .modal-quick-view .modal-content .modal-body .product-info .product-price-wrapper .product-price {
+      font-size: 16px; }
+      .modal-quick-view .modal-content .modal-body .product-info .product-price-wrapper .product-price .p-price {
+        color: #9ea3ff;
+        font-size: 24px; }
+      .modal-quick-view .modal-content .modal-body .product-info .product-price-wrapper .product-price del {
+        color: #999999; }
+    .modal-quick-view .modal-content .modal-body .product-info .product-price-wrapper .PriceSaving {
+      font-size: 14px;
+      font-style: italic; }
+  .modal-quick-view .modal-content .modal-body .product-info .qv-readmore {
+    font-size: 14px;
+    margin-top: 1rem; }
+    .modal-quick-view .modal-content .modal-body .product-info .qv-readmore .read-more {
+      color: #9ea3ff;
+      text-decoration: none;
+      background: transparent; }
+
+.modal-quick-view .modal-content .modal-footer {
+  padding: 0rem 1rem 1rem;
+  border-top: 0; }

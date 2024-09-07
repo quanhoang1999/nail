@@ -1,0 +1,167 @@
+﻿@model BillViewModel
+@{
+    ViewData["Title"] = "Bill management";
+}
+@section Scripts{
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/app/controllers/bill/billcreate.js" asp-append-version="true"></script>
+    <script>
+
+        var billObj = new BillController();
+        billObj.initialize();</script>
+}
+@section Styles{
+    <link href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+<input type="hidden" id="hid-category-id" value="0" />
+<div class="">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Bill management</h3>
+
+        </div>
+        <div class="col-md-6 text-right">
+
+            @*<div class="dropdown dropdown-inline">
+                    <button type="button" class="btn btn-default btn-icon-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-edit"></i> Action
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="~/templates/ProductImportTemplate.xlsx"><i class="fas fa-file-alt"></i> Template</a>
+                        <a class="dropdown-item" id="btn-import"><i class="fas fa-file-excel"></i> Import</a>
+                        <a class="dropdown-item" id="btn-export"><i class="fas fa-download"></i> Export</a>
+                    </div>
+                </div>
+
+                <button id="btn-create" class="btn btn-brand btn-elevate btn-icon-sm">
+                    <i class="fa fa-plus"></i>
+                    New Record
+                </button>*@
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div id="horizontal-form">
+                        <form class="form-horizontal" role="form" id="frmMaintainance">
+                            <div class="form-group row">
+                                <input type="hidden" id="hidId"  asp-for="Id" />
+                                <label for="txtCustomerName" class="col-sm-2 control-label ">Customer name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtCustomerName" asp-for="CustomerName" class="form-control" id="txtCustomerName">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="txtCustomerAddress" class="col-sm-2 control-label ">Address</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtCustomerAddress" asp-for="CustomerAddress" class="form-control" id="txtCustomerAddress" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtCustomerMobile" class="col-sm-2 control-label ">Phone</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtCustomerMobile" asp-for="CustomerMobile" class="form-control" id="txtCustomerMobile" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtCustomerMessage" class="col-sm-2 control-label ">Customer message</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtCustomerMessage" asp-for="CustomerMessage" class="form-control" id="txtCustomerMessage" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 control-label ">Payment method</label>
+                                <div class="col-sm-10">
+                                    <select id="ddlPaymentMethod" asp-for="PaymentMethod" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label f class="col-sm-2 control-label ">Bill status</label>
+                                <div class="col-sm-10">
+                                    <select id="ddlBillStatus" asp-for="BillStatus" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 control-label ">Details</label>
+                                <div class="col-sm-10">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Product Name</th>
+                                                <th>Color</th>
+                                                <th>Size</th>
+                                                <th>Quantity</th>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbl-bill-details"></tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <button class="btn btn-xs btn-success" id="btnAddDetail" type="button">Add</button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+                                    <script>
+                                        var arrObj = [];
+                                    </script>
+                                    @if (Model != null)
+
+                                    {@foreach (var item in Model.BillDetails)
+                                        {
+                                            <script>
+                                              arrObj.push({
+                                                  ProductId: @item.ProductId,
+                                                  ColorId: @item.ColorId,
+                                                  SizeId: @item.SizeId,
+                                                  Quantity: @item.Quantity
+                                              });
+                                            </script>
+                                        }
+
+                                }
+
+
+
+                                    <script type="x-tmpl-mustache" id="template-table-bill-details">
+                                        <tr data-id="{{Id}}">
+                                            <td>{{{Products}}}</td>
+                                            <td>{{{Colors}}}</td>
+                                            <td>{{{Sizes}}}</td>
+                                            <td><input type="number" class="txtQuantity form-control" value="{{Quantity}}" /></td>
+                                            <td><button class="btn btn-xs btn-delete-detail" type="button"><i class="fa fa-trash"></i></button></td>
+                                        </tr>
+                                    </script>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group row">
+                        <div class="col-sm-2 control-label "></div>
+                        <div class="col-sm-10">
+                            <button type="button" id="btnSave" class="btn btn-success">Save</button>
+                            <button type="button" id="btnConfirm" class="btn btn-success">Confirm payment</button>
+                            <button type="button" id="btnPending" class="btn btn-warning">Pending</button>
+                            <button type="button" id="btnCancel" class="btn btn-primary">Cancel</button>
+                            <button type="button" id="btnExport" class="btn btn-default">Export</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

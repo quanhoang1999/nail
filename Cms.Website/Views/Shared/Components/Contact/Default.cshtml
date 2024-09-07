@@ -1,0 +1,65 @@
+﻿@model ContactViewModel
+@if (Model != null)
+{
+    <div class="col-sm-12 col-md-12 col-lg-4  menu-footer-one">
+        <a href="#" class="logo-footer">
+            <span>Cute</span>
+            @*<img src="/frontend/images/logo.png" alt="" />*@
+        </a>
+
+
+        <ul class="footer-list no-bullets">
+            <li>
+                <i class="ti-home" aria-hidden="true"></i>
+                <p>
+                    Address: @Model.Address
+                </p>
+            </li>
+            <li>
+                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                <p>
+                    Phone:
+                    <a href="tel:@Model.Phone">@Model.Phone</a>
+                </p>
+            </li>
+            <li>
+                <i class="ti-email" aria-hidden="true"></i>
+                <p>
+                    Email :
+                    <a href="mailto: @Model.Email">@Model.Email</a>
+                </p>
+            </li>
+            <li>
+                <i class="ti-world" aria-hidden="true"></i>
+                <p>
+                    Website :
+                    <a href="@Model.Website">@Model.Website</a>
+                </p>
+            </li>
+        </ul>
+    </div>
+}
+
+<div class="col-sm-12 col-md-12 col-lg-4 menu-footer menu-footer-two">
+    <h3 class="menu-link">Location</h3>
+    <div class="footer-list content">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.78065792703!2d-96.44949358481473!3d32.90396708093392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864eaa86516c8ed3%3A0xa5245846d2f1fb89!2s1300%20E%20Ralph%20Hall%20Pkwy%20%23110%2C%20Rockwall%2C%20TX%2075032%2C%20USA!5e0!3m2!1sen!2s!4v1587800103382!5m2!1sen!2s" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" width="300" height="250"></iframe>
+    </div>
+</div>
+<div class="col-sm-12 col-md-12 col-lg-4 menu-footer menu-footer-three">
+    <h3 class="menu-link">Hours of Operation</h3>
+    <div class="footer-list content">
+        <ul class="homehours">
+            <li>Mon - Sat: 9:30 am - 7:30 pm </li>
+            <li>Sunday: 11:00 am - 5:00 pm </li>
+        </ul>
+        <div class="weaccept">
+            <h3>We Accept:</h3>
+            <div class="lstbank">
+                <img src="@Url.Content("~/frontend/images/social/visa.png")" alt="visa">
+                <img src="@Url.Content("~/frontend/images/social/master.png")" alt="master">
+                <img src="@Url.Content("~/frontend/images/social/discover.png")" alt="discover">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,246 @@
+﻿
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/frontend/css/index.css">
+    <link rel="icon" type="image/png" href="~/frontend/images/logo.png" />
+    <link rel="stylesheet" href="~/frontend/css/_custom.css">
+    <link href="~/frontend/vender/Nivo-Lightbox/nivo-lightbox.css" rel="stylesheet" type="text/css">
+    <link href="~/frontend/vender/Nivo-Lightbox/themes/default/default.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/frontend/vender/slick/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="~/frontend/vender/slick/slick/slick-theme.css" type="text/css">
+    <link rel="stylesheet" href="~/frontend/vender/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
+
+</head>
+<body class="site2">
+    <div class="overlay"></div>
+    <header id="header" class="header ">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-3">
+                        <ul class="header-top-list">
+                            <li class="phone-number">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-8 col-lg-9 header-quote">
+                        <p>sign up to receive future promotions & birthday gifts</p>
+                        <a href="/sign-in" class="quote-btn main-btn">sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-center">
+            <div class="menu-mobile">
+                <div class="btn-close-menu">
+                    <button type="button">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+                    <div class="navbar-collapse">
+                        <ul class="navbar-nav mr-auto no-bullets">
+                            <li class="menu-item"><a href="/">Home</a></li>
+                            <li class="menu-item"><a asp-area="" asp-controller="service" asp-action="IndexNew">Service</a></li>
+                            <li class="menu-item"><a asp-area="" asp-controller="booking">Booking</a></li>
+                            <li class="menu-item"><a asp-area="" asp-controller="promotion" asp-action="Index">Promotion</a></li>
+                            <li class="menu-item"><a asp-area="" asp-controller="Gallery" asp-action="index">Gallery</a></li>
+                            @*<li class="menu-item"><a asp-area="" asp-controller="EGift" asp-action="Index"></a></li>*@
+                            @*<li class="menu-item"><a asp-area="" asp-controller="review" asp-action="index">Review</a></li>*@
+                            <li class="menu-item"><a asp-area="" asp-controller="contact" asp-action="index">Contact</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-3">
+                        <div class="logo">
+                            <a href="/">
+                                <span class="img-logo"></span>
+                            </a>
+                        </div>
+                        <button class="navbar-toggler btn-menu-mobile" type="button">
+                            <span class="navbar-toggler-icon">
+                                <i class="fa fa-reorder"></i>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="col-sm-6 col-md-6 col-lg-9">
+                        <div class="menu-top">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+                                <div class="navbar-collapse">
+                                    <ul class="navbar-nav mr-auto no-bullets">
+                                        <li id="home" class="menu-item">
+                                            <a href="/">Home</a>
+                                        </li>
+                                        <li id="Service" class=" menu-item dropdown service-nav">
+                                            <a asp-area="" asp-controller="service" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                Service
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                @await Component.InvokeAsync("Service", "DropdowserviceGroupMenu")
+                                            </ul>
+                                        </li>
+                                        <li id="booking" class="menu-item"><a asp-area="" asp-controller="booking" asp-action="Index">Booking</a></li>
+                                        <li id="promotion" class="menu-item"><a asp-area="" asp-controller="promotion" asp-action="Index">Promotion</a></li>
+                                        <li id="Gallery" class="menu-item"><a asp-area="" asp-controller="Gallery" asp-action="index">Gallery</a></li>
+                                        @*<li id="EGift" class="menu-item"><a asp-area="" asp-controller="EGift" asp-action="Index">E-Gift</a></li>*@
+                                        @*<li id="review" class="menu-item"><a asp-area="" asp-controller="review" asp-action="index">Review</a></li>*@
+                                        <li id="contact" class="menu-item"><a asp-area="" asp-controller="contact" asp-action="index">Contact</a></li>
+
+                                    </ul>
+
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    @RenderBody()
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4  menu-footer-one">
+                    <a href="#" class="logo-footer">
+                        <img src="/images/nailsspalogo2.png" alt="" />
+                    </a>
+
+                    <ul class="footer-list no-bullets footer-list_content">
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 menu-footer menu-footer-two">
+                    <h3 class="menu-link">Location</h3>
+                    <div class="footer-list content  footer-list_map">
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 menu-footer menu-footer-three">
+                    <h3 class="menu-link">Hours of Operation</h3>
+                    <div class="footer-list content">
+                        <ul id="homehourscontent" class="homehours">
+                        </ul>
+                        <div class="weaccept">
+                            <h3>We Accept:</h3>
+                            <div class="lstbank">
+                                <img src="@Url.Content("~/images/social/visa.png")" alt="visa">
+                                <img src="@Url.Content("~/images/social/master.png")" alt="master">
+                                <img src="@Url.Content("~/images/social/discover.png")" alt="discover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <section id="footer-info" class="footer-info">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div id="Copyrightsid" class="col-sm-12 ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="back-to-top" class="back-to-top text-center">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </section>
+
+
+    <div class="groupfbye">
+        <a class="facebookLink" href="" target="_blank">
+            <img src="@Url.Content("~/images/social/ft_facebook_icon1.png")" alt="facebook" target="_blank" />
+        </a>
+        <a class="instagramLink" href="" target="_blank">
+            <img src="@Url.Content("~/images/social/ft_instagram_icon1.png")" alt="instagram" target="_blank" />
+        </a>
+        <a class="googleLink" href="" target="_blank">
+            <img src="@Url.Content("~/images/social/ft_google_icon1.png")" alt="google" target="_blank" />
+        </a>
+        @*<a href="#">
+                <img src="@Url.Content("~/images/social/ft_youtube_icon1.png")" alt="youtube" target="_blank" />
+            </a>*@
+    </div>
+
+    <div class="groupbtntright">
+        <a href="" class="all_onlinelink call_online">
+            <img title="Call Hotline" src="~/images/phone.gif" alt="phone-icon" />
+        </a>
+        <a href="/Sign-in" id="Subscribe" class="subscribe">
+            <i class="fa fa-comments" aria-hidden="true"></i>
+            <span> Sign up</span>
+        </a>
+        <a href="/Booking" id="book_online" class="book_online">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span> Book online</span>
+        </a>
+    </div>
+
+    <div class="float-contact">
+        <a class="facebookLink icon-face" href="" target="_blank">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="" class="instagramLink icon-instagram" target="_blank">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+    </div>
+
+
+    <script type="text/javascript" src="~/frontend/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="~/frontend/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/frontend/js/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/frontend/vender/fancybox/js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="~/frontend/vender/fancybox/js/jquery.fancybox-plus.min.js"></script>
+    <script type="text/javascript" src="~/frontend/js/popper.min.js"></script>
+    <script type="text/javascript" src="~/frontend/js/bootstrap.min.js"></script>
+    <script src="~/frontend/lib/mustache/mustache.js"></script>
+    <script src="~/frontend/lib/notifyjs/dist/notify.js"></script>
+    <script type="text/javascript" src="~/frontend/vender/fancybox/js/jquery.ez-plus.js"></script>
+    <script type="text/javascript" src="~/frontend/vender/owlcarousel/js/owl.carousel.min.js"></script>
+    <script src="~/frontend/vender/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="~/frontend/vender/fancybox/js/jquery.ez-plus.js"></script>
+    <script src="~/frontend/vender/slick/slick/slick.js"></script>
+    <script src="~/frontend/js/controller/helper.js"></script>
+    <script type="text/javascript" src="~/frontend/js/beautiful-ladies.js"></script>
+
+    @RenderSection("Scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            var pathArray = window.location.pathname.split('/');
+            if (pathArray[1] == '') {
+                pathArray[1] = 'home';
+            }
+            var element = document.getElementById(pathArray[1]);
+            element.classList.add('active');
+        })
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src='https://www.googletagmanager.com/gtag/js?id= @Convert.ToString(@Configuration["AppSettingConfig:KeyGooglegtag"])'></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config','@Convert.ToString(@Configuration["AppSettingConfig:KeyGooglegtag"])');
+    </script>
+</body>
+</html>

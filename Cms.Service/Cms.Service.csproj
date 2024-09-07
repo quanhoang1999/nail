@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DBContextEx\**" />
+    <EmbeddedResource Remove="DBContextEx\**" />
+    <None Remove="DBContextEx\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="Extensions.QueryableExtensions" Version="1.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0006" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cms.Data.EF\Cms.Data.EF.csproj" />
+    <ProjectReference Include="..\Cms.Data\Cms.Data.csproj" />
+    <ProjectReference Include="..\Cms.Infrastructure\Cms.Infrastructure.csproj" />
+    <ProjectReference Include="..\Cms.Utilities\Cms.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,165 @@
+﻿@model PostViewModel
+@{
+    ViewData["Title"] = "Edit Post";
+}
+
+@section Scripts{
+    <environment names="Development">
+            <script src="~/lib/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+            <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+           <script src="~/lib/moment/moment.js"></script>
+            <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+           <script src="~/app/controllers/post/edit.js" asp-append-version="true"></script>
+        <script>
+            var post = new postController();
+            post.initialize();</script>
+    </environment>
+    <environment names="Staging,Production">
+        <script>
+            var post = new postController();
+            post.initialize();</script>
+    </environment>
+
+}
+<input type="hidden" id="hid-category-id" value="0" />
+<div class="">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>
+                Post
+                <small>
+                    <i class="fa fa-arrow-circle-left"></i>
+                    <a href="/Admin/Post">Back</a>
+                </small>
+            </h3>
+        </div>
+        <div class="col-md-6 text-right">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="horizontal-form">
+                        <form class="form-horizontal" role="form" id="frmMaintainance">
+                            <div class="form-group row">
+                                <input type="hidden" id="hidIdM" asp-for="Id" />
+                                <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtNameM" asp-for="Name" class="form-control" id="txtNameM">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtDescM" class="col-sm-2 control-label no-padding-right">Description</label>
+                                <div class="col-sm-10">
+                                    <textarea rows="4" name="txtDescM" asp-for="Description" class="form-control" id="txtDescM"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtDateCreated" class="col-sm-2 control-label no-padding-right">Date Created</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" readonly asp-for="DateCreated" id="txtDateCreated" class="form-control">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="far fa-calendar-alt"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                            </div>
+                            </div>
+                         
+                            <div class="form-group row" id="blockFile">
+                                <label for="hdFullImage" class="col-sm-2 control-label no-padding-right">Image</label>
+                                <div class="col-sm-6">
+                                    <input type="hidden" id="hdFullImage" asp-for="FullImageUrl" />
+                                    <input type="hidden" id="txtImg" asp-for="Image" />
+                                    <input type="file" id="fileInputImage" style="display:none" />
+                                    <button type="button" id="btnSelectImg" class="btn btn-sm btn-primary">Attach file</button>
+                                    <img width="100" id="image_upload_preview" />
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="txtContentM" class="col-sm-2 control-label no-padding-right">Content</label>
+                                <div class="col-sm-10">
+                                    <textarea id="txtContent" asp-for="Content" rows="6" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtMetakeywordM" class="col-sm-2 control-label no-padding-right">SEO title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" asp-for="SeoPageTitle" name="SeoPageTitle" class="form-control" id="txtSeoPageTitleM">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtSeoAliasM" class="col-sm-2 control-label no-padding-right">SEO Url</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtSeoAliasM" asp-for="SeoAlias" class="form-control" id="txtSeoAliasM">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtMetakeywordM" class="col-sm-2 control-label no-padding-right">SEO Keywords</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtMetakeywordM" asp-for="SeoKeywords" class="form-control" id="txtMetakeywordM">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtMetaDescriptionM" class="col-sm-2 control-label no-padding-right">SEO Description</label>
+                                <div class="col-sm-10">
+                                    <textarea rows="3" name="txtMetaDescriptionM" asp-for="SeoDescription" class="form-control" id="txtMetaDescriptionM"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtTagM" class="col-sm-2 control-label no-padding-right">Tag (separated by comma)</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtTagM" asp-for="Id" data-role="tagsinput" class="form-control" id="txtTagM">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="hidden" asp-for="Status" id="hidStatus" />
+                                            <input type="checkbox" checked="checked" id="ckStatusM">
+                                            <span class="text">Active.</span>
+                                        </label>
+                                        <label>
+                                            <input type="hidden" asp-for="HotFlag" id="hidHotFlag" />
+                                            <input type="checkbox" id="ckHotM">
+                                            <span class="text">Hot post</span>
+                                        </label>
+
+                                        <label>
+                                            <input type="hidden" asp-for="HomeFlag" id="hidHomeFlag" />
+                                            <input type="checkbox" checked="checked" id="ckShowHomeM">
+                                            <span class="text">Show on home</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2"></div>
+                                <div class="col-sm-10">
+                                    <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+                                    <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+

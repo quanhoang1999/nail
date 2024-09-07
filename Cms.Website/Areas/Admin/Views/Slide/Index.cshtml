@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "Slide";
+}
+@section Scripts{
+
+    <script src="~/app/controllers/slide/index.js" asp-append-version="true"></script>
+    <script>
+        var slide = new SlideController();
+        slide.initialize();</script>
+}
+@section Styles{
+
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h1 class="pull-left">
+            Side
+        </h1>
+
+    </div>
+    <div class="col-md-6 text-right">
+
+
+        <a id="btnCreate" href="/admin/slide/slideedit" class="btn btn-brand btn-elevate btn-icon-sm">
+            <i class="fa fa-plus"></i>
+            New Record
+        </a>
+
+    </div>
+</div>
+@*<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+        </ol>
+    </nav>*@
+
+<div class="clearfix"></div>
+<div class="x_panel">
+    <div class="x_content">
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hình</th>
+                            <th>Tiêu đề</th>
+                            @*<th>Ngày tạo</th>*@
+                            <th>Trạng thái</th>
+                            <th width="20%">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                </table>
+                <!--Pagination-->
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                            <ul id="paginationUL"></ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{{Image}}}</td>
+        <td>{{Name}}</td>
+        @*<td>{{CreatedDate}}</td>*@
+        <td>{{{Status}}}</td>
+        <th scope="row">
+
+            <a class="btn btn-clean btn-icon btn-sm" href="/admin/slide/slideedit/{{Id}}"><i class="far fa-edit"></i></a>
+            <a class="btn btn-clean btn-icon btn-sm  btn-delete" data-id="{{Id}}"><i class="far fa-trash-alt"></i></a>
+            <a class="btn btn-clean btn-icon btn-sm  btn-copy" data-name="{{Name}}" data-id="{{Id}}"><i class="fas fa-copy"></i></a>
+        </th>
+    </tr>
+</script>
+<partial name="_CopyModal" />

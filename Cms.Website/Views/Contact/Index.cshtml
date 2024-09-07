@@ -1,0 +1,109 @@
+﻿@model ContactPageViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<section class="banner-page">
+    <div class="banner">
+        <div class="page-title">
+            <h1>Investing Opportunities</h1>
+            <span class="page-subtitle">Become a Part of a Growing and Thriving Industry</span>
+        </div>
+    </div>
+</section>
+<section class="main contact">
+    <div class="container">
+        <div class="row info">
+            <div class="col-12 col-md-4">
+                <div class="item address">
+                    <h3><i class=""></i> Address</h3>
+                    <p class="txt">
+                        @Model.Contact.Address
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="item lets-talk">
+                    <h3><i class=""></i> Lets Talk</h3>
+                    <p class="txt">
+                        @Model.Contact.Phone
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="item general-support">
+                    <h3><i class=""></i> General Support</h3>
+                    <p class="txt">
+                        @Model.Contact.Email
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="row info2">
+            <div class="col-12">
+                <div class="item">
+                    <div class="location">
+                        <h3>Location</h3>
+                        <div id="contentmaps" class="content">
+                           
+                        </div>
+                    </div>
+                    <div class="frm-send-message">
+                        <h3>Send Us A Message</h3>
+                        @if (ViewData["Success"] != null && (bool)ViewData["Success"] == true)
+                        {
+
+                            <div class="alert alert-success" role="alert">
+                                Thank you for sending information successfully. We will contact you as soon as possible.
+                            </div>
+                        }
+                        else
+                        {
+                            <form class="frm-contact" action="/contact" method="post">
+                                @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <label for="name">Your Name (required) <span style="color: red;">*</span></label>
+
+                                    <input autofocus type="text" asp-for="Feedback.Name" class="form-control" id="name">
+                                    <span class="text-danger" asp-validation-for="Feedback.Name"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Your Email (required) <span style="color: red;">*</span></label>
+                                    <input type="email" asp-for="Feedback.Email" class="form-control" id="email">
+                                    <span class="text-danger" asp-validation-for="Feedback.Email"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Phone Number (required) <span style="color: red;">*</span></label>
+                                    <input type="tel" asp-for="Feedback.Phone" class="form-control" id="Phone">
+                                    <span class="text-danger" asp-validation-for="Feedback.Phone"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Your Message</label>
+                                    <textarea type="input" asp-for="Feedback.Message" class="form-control" id="message" rows="5"></textarea>
+                                </div>
+                                <div class="groupsubmit">
+                                    <button type="submit" class="btn btn-submit">Send</button>
+                                </div>
+                            </form>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+  
+    <script src="@Url.Content("~/frontend/js/controller/Contact.js")" asp-append-version="true"></script>
+    <script>
+        var ContactObj = new ContactController();
+        ContactObj.initialize();
+    </script>
+}
+

@@ -1,0 +1,546 @@
+﻿@model BookingAddNewModel
+
+@{
+    ViewData["PageTitle"] = "Hướng dẫn mua hàng";
+    ViewData["SeoKeywords"] = "Hướng dẫn mua hàng";
+    ViewData["SeoDescription"] = "Hướng dẫn mua hàng";
+    ViewData["Title"] = "Booking";
+}
+<head>
+    <link href="~/frontend/vender/air-datepicker-master/air-datepicker-master/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Include English language -->
+
+    <style>
+        .lsttime ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(132px, 1fr));
+        }
+
+        .lsttime li {
+            /*text-align: center;*/
+            padding-bottom: 10px;
+        }
+
+        .h3-service-select {
+            /*position: absolute;*/
+            left: 0;
+            color: #26a543 !important;
+        }
+    </style>
+</head>
+<section class="banner-page">
+    <div class="banner">
+        <div class="page-title">
+            <h1>Booking</h1>
+            <span class="page-subtitle">Become a Part of a Growing and Thriving Industry</span>
+        </div>
+    </div>
+</section>
+<section class="main booking" id="booking-step">
+    <div class="container">
+        <!-- Horizontal Steppers -->
+        <ul class="nav nav-pills pills-tab" id="pills-tab" role="tablist">
+            <li class="nav-item ">
+                <a class="nav-link" id="start-tab" data-toggle="pill" href="#pills-start" role="tab"
+                   aria-controls="pills-start" aria-selected="true">
+                    <span class="number">
+                        <i class="fa fa-play"></i>
+                    </span>
+                    Start
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" id="services-tab" data-toggle="pill" href="javascript:;" role="tab"
+                   aria-controls="pills-services" aria-selected="false">
+                    <span class="number">
+                        <i class="fa fa-hand-paper-o" aria-hidden="true"></i>
+                    </span>
+                    Pick Services
+                </a>
+                <label id="errServiceStep" generated="true" class="has-error" style="display: inline-block;"></label>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " id="time-tab" data-toggle="pill" href="javascript:;" role="tab"
+                   aria-controls="pills-time" aria-selected="false">
+                    <span class="number">
+                        <i class="ti-timer"></i>
+                    </span>
+                    Appointment time
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="finish-tab" data-toggle="pill" href="javascript:;" role="tab"
+                   aria-controls="pills-finish" aria-selected="false">
+                    <span class="number">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    </span>
+                    Finish
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content tab-pare" id="pills-tabContent">
+            <div class="tab-pane fade  show active" id="pills-start" role="tabpanel" aria-labelledby="start-tab">
+                <div id="start" class="start">
+                    <form class="frmbooking" id="frmbooking" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="form-row">
+                            <div class="col col-12 col-lg-4">
+                                <label class="" for="yourname">Your Name (required)<span style="color: red;">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="ti-user"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" asp-for="Name" class="form-control" placeholder="Your Name" id="yourname">
+                                </div>
+                                <span class="text-danger" asp-validation-for="Name"></span>
+
+                            </div>
+                            <div class="col col-12 col-lg-4">
+                                <label class="" for="phonenumber">Phone Number (required)<span style="color: red;">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="ti-headphone-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" id="phonenumber">
+
+
+                                </div>
+                                <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                            </div>
+                            <div class="col col-12 col-lg-4">
+                                <label class="" for="email">Your Email</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="ti-email"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" asp-for="Email" id="email" class="form-control" placeholder="Your Email">
+
+                                </div>
+                                <span class="text-danger" asp-validation-for="Email"></span>
+                            </div>
+                        </div>
+                        <div class="form-row mt-4">
+                            <div class="col">
+                                <label for="message">Your Message</label>
+                                <textarea asp-for="Note" placeholder="Your Message: If you need preffered technicians please input thier name here" type="input" class="form-control" id="message"
+                                          rows="5"></textarea>
+                                <span class="text-danger" asp-validation-for="Note"></span>
+                            </div>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <button style="display: none" id="steponeSubmit" type="submit">save</button>
+                        <input type="button" style="display: none" id="btn-reset" value="Reset" />
+                    </form>
+                </div>
+                <div class="groupbtn">
+                    <div class="controls">
+                        <div class="next ">
+                            <a class="btn btn-next" id="services-tab-next"  style="background: #D0B063" data-step="services-tab" href="javascript:;">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade tab-pare" id="pills-services" role="tabpanel" aria-labelledby="services-tab">
+                <div id="pick-services" class="pick-services">
+                    <div class="row">
+                        <div class="group-services">
+                            <div class="lstservice">
+                                <div class="slide-service">
+                                    <div id="slider-product">
+
+                                        @await Component.InvokeAsync("Service", "serviceGroup")
+                                    </div>
+                                </div>
+                                <div class="lstpickservices">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Name</th>
+                                                <th>Time</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbl-content"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="itemservice">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Service</th>
+                                            <th>Time</th>
+                                            <th>Tech</th>
+                                            <th>Price</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbl-content-card"></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                <span class="total">EST. Total</span>
+                                            </td>
+                                            <td colspan="2" id="cartTotal">
+                                                $0
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="groupbtn">
+                    <div class="controls">
+                        <div class="prev ">
+                            <a class="btn btn-back" id="services-tab-back" data-step="start-tab" href="javascript:;">Back</a>
+                        </div>
+                        <div class="next ">
+                            <a class="btn btn-next" id="services-tab-next" data-step="time-tab"  style="background: #D0B063" href="javascript:;">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade tab-pare" id="pills-time" role="tabpanel" aria-labelledby="time-tab">
+                <div id="pick-time" class="pick-time">
+                    <div class="row">
+                        <div class="col-12 col-md-6 ">
+                            <div class="datepicker-here " id="datePick" data-language='en'></div>
+                        </div>
+                        <div class="col-12 col-md-6 lsttime">
+                            <h3>List of time suggest</h3>
+                            <ul id="lstTimePick">
+                                @*<li class="select">
+                                        <input class="radio-select" name="pick-time" id="pick-time" data-val="10:00" type="radio" checked />
+                                        <i class="ti-alarm-clock"></i>10:00 AM
+                                    </li>*@
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="groupbtn">
+                    <div class="controls">
+                        <div class="prev">
+                            <a class="btn btn-back" id="time-tab-back" data-step="services-tab" href="javascript:;">Back</a>
+                        </div>
+                        <div class="next">
+                            <a class="btn btn-next" id="time-tab-next" data-step="finish-tab" href="javascript:;">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade " id="pills-finish" role="tabpanel" aria-labelledby="time-tab">
+                <div id="finish-content" class="finish">
+                    <div id="finish" class="finish">
+                        <div class="row">
+                            <div class="col-12" id="tb-finihs-content-header">
+
+                            </div>
+                            <div class="col-12">
+                                <div class="itemservice">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Service</th>
+                                                <th>Time</th>
+                                                <th>Tech</th>
+                                                <th>Price</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb-finihs-content-body"></tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <span class="total">EST. Total</span>
+                                                </td>
+                                                <td colspan="2">
+                                                    <span class="total-price" id="finishTotal">$</span>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="groupbtn">
+                            <div class="controls">
+                                <div class="next">
+                                    <a class="btn btn-next" href="#" data-toggle="modal"
+                                       data-target="#modalFinish">Finish</a>
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="groupbtn">
+                        <div class="controls">
+                            <div class="prev">
+                                <a class="btn btn-back" id="time-tab-back" data-step="time-tab" href="javascript:;">Back</a>
+                            </div>
+                            <div class="next">
+                                <a class="btn btn-next" id="btnBooking" style="background: #D0B063" href="javascript:;">Booking</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.Horizontal Steppers -->
+    </div>
+</section>
+
+
+<div class="modal fade modalEmployees" id="modalEmployees" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">List Employees</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="lstemployees" id="lst-emp">
+
+                </div>
+            </div>
+            @*<div class="modal-footer">
+
+                    <button type="button" class="btn btn-primary" id="selectEmp">Select</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalFinish" id="modalFinish" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-confirm " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="ti-check"></i>
+                </div>
+                <h4 class="modal-title">Success!</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">
+                    Thank you for your booking.
+                    Please check your email and message for details.
+                    We are looking forward to serving you.
+                    However, in case we are not available at that time we will contact you soon.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalFinishError" id="modalFinishError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-confirm " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="ti-close"></i>
+                </div>
+                <h4 class="modal-title">SORRY!</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">We are not available at this time. Please pick another time or other preferred technicians or you can call us for more details. Sorry for any inconvenience!.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper-loader hide">
+    <div id="loader">
+        <img src="~/images/icon/Spinnerpx.svg">
+    </div>
+</div>
+
+@*<div class=" modal fade modalFinish1" id="ajax-loader" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="false">
+        <div class="loading" align="center">
+            <img src="~/images/icon/Spinnerpx.svg" alt="" />
+        </div>
+    </div>*@
+
+<script id="table-template-card" type="x-tmpl-mustache">
+    <tr>
+       @*  <td>
+            {{Name}}
+        </td> *@
+
+          <td>
+            <div class="media" data-toggle="modal"
+                 data-target="#modalEmployees">
+                <div class="media-body">
+                    <p class="title">{{Name}}</p>
+                </div>
+            </div>
+        </td>
+        <td>{{Time}}'</td>
+        <td>
+            <div class="media" data-toggle="modal"
+                 data-target="#modalEmployees">
+                <img class="avatar" src="{{Image}}" alt="">
+
+                <div class="media-body">
+                    <p class="title">{{TechName}}</p>
+                </div>
+            </div>
+        </td>
+        @*<td>
+                <div class="media">
+                    <img class="avatar" src="{{Image}}" alt="">
+                </div>
+            </td>*@
+        <td>${{SalePrice}}</td>
+        <td>
+            <a href="javascript:;" data-index="{{index}}"  data-id="{{Id}}" src="{{Image}}" class="icon-del">
+                <i class="ti-trash"></i>
+            </a>
+        </td>
+    </tr>
+</script>
+<script id="table-template-lst-emp" type="x-tmpl-mustache">
+    <div class="item">
+        <img src="{{Avartar}}" alt="..." width="100">
+        <input type="radio" hidden name="empcs" id="empcs" data-id="{{Id}}" data-name="{{Name}}">
+        <h3 class="name">  <i hidden class="ti-check"></i> {{Name}}</h3>
+
+    </div>
+</script>
+<script id="table-template-finish" type="x-tmpl-mustache">
+
+    <div class="form-row">
+        <div class="col col-12 col-lg-6">
+            <label class="title">Name:</label>
+            <label class="txt">{{CusName}}</label>
+        </div>
+        <div class="col col-12 col-lg-6">
+            <label class="title">Phone:</label>
+            <label class="txt">{{CusPhone}}</label>
+        </div>
+        <div class="col col-12 col-lg-6">
+            <label class="title">Email:</label>
+            <label class="txt">{{CusEmail}}</label>
+        </div>
+        <div class="col col-12 col-lg-6">
+            <label class="title">Book time:</label>
+            <label class="txt">{{BookTime}}</label>
+        </div>
+    </div>
+    <div class="form-row">
+
+        <div class="col col-12 col-lg-6">
+            <label class="title">Appointment time:</label>
+            <label class="txt">{{TimePick}}</label>
+        </div>
+        <div class="col col-12 col-lg-6">
+            <label class="title">EST Finish Time:</label>
+            <label class="txt">{{ESTFinishTime}}</label>
+        </div>
+    </div>
+
+    <div class="form-row mt-4">
+        <div class="col">
+            <label class="title">Your Message</label>
+            <p class="txt">
+                {{CusMessage}}
+            </p>
+        </div>
+    </div>
+
+
+</script>
+<script id="table-template-finish-body" type="x-tmpl-mustache">
+    <tr>
+        <td>
+            {{ServiceName}}
+        </td>
+        <td>{{ServiceTech}}</td>
+        <td>
+            <div class="media">
+                <img class="avatar" src="{{ServiceTechImage}}" alt="">
+
+                <div class="media-body">
+                    <p class="title">{{ServiceTechName}}</p>
+                </div>
+            </div>
+        </td>
+        <td>${{ServicePrice}}</td>
+
+    </tr>
+
+</script>
+<script id="table-template" type="x-tmpl-mustache">
+
+    <tr data-id="{{Id}}">
+        <td>
+            <div class="custom-control custom-checkbox">
+                <i hidden class="ti-check"></i>
+                <input hidden type="checkbox" data-id="{{Id}}" />
+            </div>
+        </td>
+        <td>
+            <div class="media">
+                <img class="avatar" src="{{Image}}" alt="">
+
+                <div class="media-body">
+                    <p class="title">{{Name}}</p>
+                </div>
+            </div>
+        </td>
+        <td>{{Time}}</td>
+        <td>{{SalePrice}}</td>
+    </tr>
+</script>
+<script id="table-time-template" type="x-tmpl-mustache">
+    <li>
+        <span>
+            <i hidden class="ti-check"></i>
+        </span>
+        <input class="radio-select" hidden name="pick-time" id="pick-time" data-val="{{Time}}" type="radio" />
+        <i class="ti-alarm-clock"></i>{{Time}}
+    </li>
+</script>
+@section Scripts {
+    <script src="@Url.Content("~/frontend/vender/air-datepicker-master/air-datepicker-master/dist/js/datepicker.min.js")"></script>
+    <script src="@Url.Content("~/frontend/vender/air-datepicker-master/air-datepicker-master/dist/js/i18n/datepicker.en.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/frontend/js/jquery.maskedinput.js")"></script>
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script src="@Url.Content("~/frontend/js/controller/booking.js")" asp-append-version="true"></script>
+    <script>
+        var bookingObj = new BookingController();
+        bookingObj.initialize();
+    </script>
+}
+
+
+

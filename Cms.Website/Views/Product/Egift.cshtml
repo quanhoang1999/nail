@@ -1,0 +1,331 @@
+﻿@model EgifAddViewModel;
+@{
+    ViewData["Title"] = "E_Gift";
+    List<ProductViewModel> products = Model.GiftCartModels;
+
+}
+<head>
+    <link href="~/vender/air-datepicker-master/air-datepicker-master/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .datepickers-container {
+            position: absolute;
+            left: 0;
+            top: -140px;
+        }
+    </style>
+</head>
+<section class="banner-page">
+    <div class="banner">
+        <div class="page-title">
+            <h1>E-Gift</h1>
+            <span class="page-subtitle">Become a Part of a Growing and Thriving Industry</span>
+        </div>
+    </div>
+</section>
+
+<section class="main gift-card">
+    <div class="container">
+        <div class="row product-list">
+            <div class="col col-12 col-md-8 box-left">
+                <div class="title_gift">
+                    <i class="fa fa-location-arrow"></i>
+                    Please choose a design and add input e-gift information:
+                </div>
+                @Html.Partial("_ServiceList", products)
+            </div>
+            <div class="col-12 col-md-4 box-right">
+                <div class="col-12 block_cart">
+                    <div class="title_gift">
+                        <i class="fa fa-cart-plus"></i> Your cart
+                    </div>
+                    <figure class="order">
+                        <figure class="inner">
+                            <ul id="lstegiftcard"></ul>
+                        </figure>
+                        <figure class="total">
+                            <ul class="total-payment-info">
+                                <li>
+                                    <label class="sanb">Subtotal</label>
+                                    <span class="sanb pull-right order_price" id="cart_subtotal"></span>
+                                </li>
+                                <li id="product_discount_info">
+                                    <label class="sanb">Discount</label>
+                                    <span class="sanb pull-right order_price"
+                                          id="cart_product_discount_value">$0</span>
+                                </li>
+                                <li>
+                                    <label class="sanb">Tax/Fee</label>
+                                    <span class="sanb pull-right order_price" id="cart_tax">$0</span>
+                                </li>
+                                <li>
+                                    <label class="sanb">Total</label>
+                                    <span class="sanb pull-right order_price_total"
+                                          id="cart_payment_total">$40</span>
+                                </li>
+                            </ul>
+                        </figure>
+                    </figure>
+                </div>
+            </div>
+            <form class="" id="frmpayment" method="post">
+                <div id="frm-payment" class="col-12 box_cart cart p-payment show-frm-payment" style="display: none;">
+                    <div class="row">
+
+                        @Html.AntiForgeryToken()
+                        <div class="col-12 col-md-6 block_cart">
+                            <div class="title_gift">
+                                <i class="fa fa-id-card"></i> Your Information:
+                            </div>
+                            <div class="form_cart">
+                                <div class="form-group">
+                                    <label>Your name (First & Last Name)<span style="color: red;">*</span>:</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="ti-user"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" asp-for="Name" class="form-control" placeholder="Your Name" id="yourname">
+
+                                    </div>
+                                    <span class="text-danger" asp-validation-for="Name"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Your Email<span style="color: red;">*</span>:</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="ti-email"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" asp-for="Email" id="email" class="form-control" placeholder="Your Email">
+                                    </div>
+                                    <span class="text-danger" asp-validation-for="Email"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Your Phone<span style="color: red;">*</span>:</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-phone"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" id="phonenumber">
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Message (160 characters)<span style="color: red;">*</span>:</label>
+                                    <div class="input-group mb-3">
+                                        <textarea asp-for="Note" placeholder="Your Message" type="input" class="form-control" id="message"
+                                                  rows="5"></textarea>
+                                        <span class="text-danger" asp-validation-for="Note"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 block_cart">
+                            <div class="title_gift">
+                                <i class="fa fa-cart-plus"></i> Recipient Information:
+                            </div>
+                            <div class="form_cart">
+                                <div class="form-group">
+                                    <label>Recipient Name (First & Last Name)<span style="color: red;">*</span>:</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="ti-user"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" asp-for="RecipientName" class="form-control" placeholder="Recipient Name" id="RecipientName">
+
+                                    </div>
+                                    <span class="text-danger" asp-validation-for="RecipientName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Recipient's Email<span style="color: red;">*</span>:</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="ti-email"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" asp-for="RecipientEmail" id="RecipientEmail" class="form-control" placeholder="Recipient'Email">
+
+                                    </div>
+                                    <span class="text-danger" asp-validation-for="RecipientEmail"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Recipient's Phone Number<span style="color: red;">*</span>:</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-phone"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" asp-for="RecipientPhoneNumber" class="form-control" placeholder="Recipient's Phone" id="RecipientPhone">
+
+                                    </div>
+                                    <span class="text-danger" asp-validation-for="RecipientPhoneNumber"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Deliver this gift on:</label>
+                                    <div class="input-group mb-3  " placeholder="">
+                                        <div class="input-group-prepend ">
+                                            <span class="input-group-text">
+                                                <i class="fa ti-timer"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="form-control  datepicker-here" data-language='en' data-date-format="mm/dd/yyyy" id="datePick" placeholder="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 group-btn-payment">
+                            <button type="submit" title="Preview order" class="btn btn_preview" data-toggle="modal"
+                                    data-target="#modal_preview_gift_card">
+                                <span>Preview order</span>
+                            </button>
+
+                            <button type="button" title="Checkout with Paypal" class="btn btn_payment" id="btnCheckOut">
+                                <span>
+                                    Check out
+                                    with<span>
+                                        Pay<span>Pal</span>
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<div class="wrapper-loader hide">
+    <div id="loader">
+        <img src="~/images/icon/Spinnerpx.svg">
+    </div>
+</div>
+<!-- Modal preview -->
+<div class="modal fade modal_preview_gift_card" id="modal_preview_gift_card" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ul>
+                    <li>
+                        <h3>La Brise Nail Lounge</h3>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <i class="ti-home" aria-hidden="true"></i>
+                        </span>
+                        <p>
+                            Address:  3191 US-421, Zionsville, IN 46077
+                        </p>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>
+                                <span class="icon">
+                                    <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                </span>
+                                <p>
+                                    Phone:
+                                    <a href="tel:3173608888">(317) 360-8888</a>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <i class="ti-email" aria-hidden="true"></i>
+                                </span>
+                                <p>
+                                    Email :
+                                    <a href="mailto: info@labrisenaillounge.com">info@labrisenaillounge.com</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>
+                        <h3>This is the gift from buys full name (123) 456-7891 to Recipient full name</h3>
+                    </li>
+                    <li>
+                        <p>Code - Name:....................</p>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>Serial number: XXXXXX</li>
+                            <li>Expirec on: 10/31/2021</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="./images/gitf-card/1.jpeg" alt="" />
+                    </li>
+                    <li class="desc">
+                        <p>
+                            Gift Cards-Available in any denomination for services or products. Gift cards are
+                            non-refundable. We are not responsible for lost or damaged gift cards.
+                        </p>
+                        <p>
+                            Spa Packages- Please note that all spa packages must be redeemed as listed. If you
+                            choose to uprade or if you choose a different service, you will be required to pay for
+                            each service individually. There are no exceptions to any changes within a package
+                        </p>
+                    </li>
+                    <li class="footer">
+                        <h3>For letter serving you please call us at (317) 360-8888 for appointment.</h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template-egiftcard" type="x-tmpl-mustache">
+    <li>
+        <div class="frame_img">
+            <img src="{{urlimg}}"
+                 alt="Giftcards " title="Giftcards ">
+        </div>
+        <div class="qty_product center">
+            <p>{{Quantity}}</p>
+        </div>
+        <div class="price order_price">
+            <p>{{Price}}</p>
+        </div>
+        <div class="btn action">
+            <a href="javascript:;" data-id="{{Id}}" class="icon-del">
+                <i class="ti-trash"></i>
+            </a>
+        </div>
+    </li>
+</script>
+
+@section Scripts {
+
+    <script src="@Url.Content("~/frontend/vender/slick/slick/slick.js")"></script>
+    <script src="@Url.Content("~/frontend/vender/air-datepicker-master//air-datepicker-master//dist/js/datepicker.min.js")"></script>
+    <script src="@Url.Content("~/frontend/vender/air-datepicker-master//air-datepicker-master//dist/js/i18n/datepicker.en.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/frontend/js/jquery.maskedinput.js")"></script>
+
+    <script src="@Url.Content("~/frontend/js/controller/egift.js")" asp-append-version="true"></script>
+    <script>
+        var egiftObj = new EgiftController();
+        egiftObj.initialize();
+    </script>
+
+}

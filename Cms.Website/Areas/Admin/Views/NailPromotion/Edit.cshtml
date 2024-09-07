@@ -1,0 +1,173 @@
+﻿
+@model NailPromotionViewModel
+@{
+    ViewData["Title"] = "Nail promotion";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <script src="~/lib/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/lib/moment/moment.js"></script>
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <environment names="Development">
+        <script src="~/app/controllers/nailpromotion/detail.js" asp-append-version="true"></script>
+        <script>
+
+            var promotion = new NailPromotionEditController();
+            promotion.initialize();
+        </script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/app/controllers/nailpromotion/detail.js" asp-append-version="true"></script>
+        <script>
+
+            var promotion = new NailPromotionEditController();
+            promotion.initialize();
+        </script>
+    </environment>
+}
+
+
+
+
+<input type="hidden" id="hid-category-id" value="0" />
+<div class="">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>
+                Promotion
+                <small>
+                    <i class="fa fa-arrow-circle-left"></i>
+                    <a href="/Admin/nailpromotion">Back</a>
+                </small>
+            </h3>
+
+        </div>
+        <div class="col-md-6 text-right">
+
+
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <div class="form-group row">
+                            <input type="hidden" id="hidIdM" asp-for="Id" />
+                            <input type="hidden" id="hidImageName" asp-for="Image" />
+                            <input type="hidden" id="hidImage" asp-for="ImageFullUrl" />
+                            <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtNameM" asp-for="Name" class="form-control" id="txtNameM">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <label for="txtShortname" class="col-sm-2 control-label no-padding-right">Sale price</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtSalePrice" asp-for="SalePrice" class="form-control" id="txtSalePrice">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="txtDateStarted" class="col-sm-2 control-label no-padding-right">Date Started</label>
+                            <div class="col-sm-4">
+                                <div class="input-group date" data-provide="datepicker">
+                                    <input type="text" readonly asp-for="StartDate" id="txtDateStarted" class="form-control">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <label for="txtDateExpired" class="col-sm-2 control-label no-padding-right">Date Expired</label>
+                            <div class="col-sm-4">
+                                <div class="input-group date" data-provide="datepicker">
+                                    <input type="text" readonly asp-for="ExpriredDate" id="txtDateExpired" class="form-control">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="NailStoreId" class="col-sm-2 control-label no-padding-right"> Store</label>
+                            <div class="col-sm-10">
+                                <select asp-for="NailStoreId" id="slNailStoreId" asp-items="@(new SelectList(ViewBag.NailStore,"Id","Name"))">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="Description" class="col-sm-2 control-label no-padding-right">Description</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" name="Description" asp-for="Description" class="form-control" id="txtDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Image" class="col-sm-2 control-label no-padding-right"></label>
+                            <div class="col-sm-6">
+                                @*<input type="text" name="txtImage" readonly class="form-control" id="txtImage" />*@
+                                <input type="file" id="fileInputImage" style="display:none" />
+                                <button type="button" id="btnSelectImg" class="btn btn-sm btn-primary">Attach file</button>
+                                <img width="100" id="image_upload_preview" />
+
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="hidden" asp-for="IsActive" id="hidActive" />
+                                        <input type="checkbox" id="ckStatusM">
+                                        <span class="text">Active.</span>
+                                    </label>
+                                   
+
+                                    <label>
+                                        <input type="hidden" asp-for="IsShowHomePage" id="hidShowHomePage" />
+                                        <input type="checkbox" id="ckShowHomeM">
+                                        <span class="text">Show on home</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <div class="col-sm-10">
+                                <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

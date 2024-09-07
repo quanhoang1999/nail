@@ -1,0 +1,110 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20180912091523_addproductsfix.cs" />
+    <Compile Remove="Migrations\20181001164943_fixdatabale.cs" />
+    <Compile Remove="Migrations\20181001165558_fixdatabale2.cs" />
+    <Compile Remove="Migrations\20181103090031_addtablefromKien.cs" />
+    <Compile Remove="Migrations\20181103090655_removedefaultfalse.cs" />
+    <Compile Remove="Migrations\20181117081016_fixproductimages.cs" />
+    <Compile Remove="Migrations\20181229064743_fixproductparentidv2.cs" />
+    <Compile Remove="Migrations\20181229065251_fixproductparentidv3.cs" />
+    <Compile Remove="Migrations\20181229065912_fixproductparentidv3.cs" />
+    <Compile Remove="Migrations\20181229070256_fixproductparentidv3.cs" />
+    <Compile Remove="Migrations\20190101140743_editBaseunitid.cs" />
+    <Compile Remove="Migrations\20190826174421_initZaloka.cs" />
+    <Compile Remove="Migrations\20190826174421_initZaloka.Designer.cs" />
+    <Compile Remove="Migrations\20190826175032_initZalokav2.cs" />
+    <Compile Remove="Migrations\20190826175032_initZalokav2.Designer.cs" />
+    <Compile Remove="Migrations\20190826175549_initZalokav2.cs" />
+    <Compile Remove="Migrations\20190826175549_initZalokav2.Designer.cs" />
+    <Compile Remove="Migrations\20190830102147_foreikeyOa.cs" />
+    <Compile Remove="Migrations\20190830102147_foreikeyOa.Designer.cs" />
+    <Compile Remove="Migrations\20190830102850_foreikeyOa.cs" />
+    <Compile Remove="Migrations\20190830102850_foreikeyOa.Designer.cs" />
+    <Compile Remove="Migrations\20190907034231_mesagroupuser.cs" />
+    <Compile Remove="Migrations\20190907034231_mesagroupuser.Designer.cs" />
+    <Compile Remove="Migrations\20190907040245_mesagroupuser.cs" />
+    <Compile Remove="Migrations\20190907040245_mesagroupuser.Designer.cs" />
+    <Compile Remove="Migrations\20190907040534_mesagroupuser.cs" />
+    <Compile Remove="Migrations\20190907040534_mesagroupuser.Designer.cs" />
+    <Compile Remove="Migrations\20190907044109_mesagroupuser.cs" />
+    <Compile Remove="Migrations\20190907044109_mesagroupuser.Designer.cs" />
+    <Compile Remove="Migrations\20190907044312_mesagroupuserv2.cs" />
+    <Compile Remove="Migrations\20190907044312_mesagroupuserv2.Designer.cs" />
+    <Compile Remove="Migrations\20190907045129_mesagroupuserv2.cs" />
+    <Compile Remove="Migrations\20190907045129_mesagroupuserv2.Designer.cs" />
+    <Compile Remove="Migrations\20190920084700_fixuseroa.cs" />
+    <Compile Remove="Migrations\20190920084700_fixuseroa.Designer.cs" />
+    <Compile Remove="Migrations\20190921100837_campaign.cs" />
+    <Compile Remove="Migrations\20190921100837_campaign.Designer.cs" />
+    <Compile Remove="Migrations\20191225063237_editidentity.cs" />
+    <Compile Remove="Migrations\20191225063237_editidentity.Designer.cs" />
+    <Compile Remove="Migrations\20191225063732_editidentity.cs" />
+    <Compile Remove="Migrations\20191225063732_editidentity.Designer.cs" />
+    <Compile Remove="Migrations\20191225064659_editidentity.cs" />
+    <Compile Remove="Migrations\20191225064659_editidentity.Designer.cs" />
+    <Compile Remove="Migrations\20191225065905_editidentity.cs" />
+    <Compile Remove="Migrations\20191225065905_editidentity.Designer.cs" />
+    <Compile Remove="Migrations\20191225070715_editidentity.cs" />
+    <Compile Remove="Migrations\20191225070715_editidentity.Designer.cs" />
+    <Compile Remove="Migrations\20191225071004_editidentityv2.cs" />
+    <Compile Remove="Migrations\20191225071004_editidentityv2.Designer.cs" />
+    <Compile Remove="Migrations\20191225184401_product.cs" />
+    <Compile Remove="Migrations\20191225184401_product.Designer.cs" />
+    <Compile Remove="Migrations\20191228191716_addpost.cs" />
+    <Compile Remove="Migrations\20191228191716_addpost.Designer.cs" />
+    <Compile Remove="Migrations\20200115162939_slide.cs" />
+    <Compile Remove="Migrations\20200115162939_slide.Designer.cs" />
+    <Compile Remove="Migrations\20200503081413_picture.cs" />
+    <Compile Remove="Migrations\20200503081413_picture.Designer.cs" />
+    <Compile Remove="Migrations\20200530165633_addnailstore.cs" />
+    <Compile Remove="Migrations\20200530165633_addnailstore.Designer.cs" />
+    <Compile Remove="Migrations\20231119140726_updae-nail-egift.cs" />
+    <Compile Remove="Migrations\20231119140726_updae-nail-egift.Designer.cs" />
+    <Compile Remove="Migrations\20231119141002_updae-nail-egift.cs" />
+    <Compile Remove="Migrations\20231119141002_updae-nail-egift.Designer.cs" />
+    <Compile Remove="Migrations\20231119141213_updae-nail-egift.cs" />
+    <Compile Remove="Migrations\20231119141213_updae-nail-egift.Designer.cs" />
+    <Compile Remove="Migrations\20231119141424_updae-nail-egift.cs" />
+    <Compile Remove="Migrations\20231119141424_updae-nail-egift.Designer.cs" />
+    <Compile Remove="Migrations\20231119141721_updae-nail-egift.cs" />
+    <Compile Remove="Migrations\20231119141721_updae-nail-egift.Designer.cs" />
+    <Compile Remove="Migrations\20240106091035_Reset.cs" />
+    <Compile Remove="Migrations\20240106091035_Reset.Designer.cs" />
+    <Compile Remove="Migrations\20240106092336_InitialCreate.cs" />
+    <Compile Remove="Migrations\20240106092336_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cms.Data\Cms.Data.csproj" />
+    <ProjectReference Include="..\Cms.Infrastructure\Cms.Infrastructure.csproj" />
+    <ProjectReference Include="..\Cms.Utilities\Cms.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>

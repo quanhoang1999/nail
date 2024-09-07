@@ -1,0 +1,273 @@
+.modalNotification {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 9999; }
+  .modalNotification .notification {
+    width: 850px;
+    margin: 0px auto;
+    padding: 10px;
+    margin-top: 110px;
+    background: #888;
+    box-shadow: 0px 0px 4px 1px #888;
+    overflow: hidden;
+    position: relative; }
+    @media (max-width: 720px) {
+      .modalNotification .notification {
+        width: 90%;
+        margin-top: 20px; } }
+    .modalNotification .notification img {
+      width: 49%;
+      border: 1px solid #ccc; }
+      @media (max-width: 720px) {
+        .modalNotification .notification img {
+          width: 100%;
+          max-width: 650px; } }
+    .modalNotification .notification .closenoti {
+      color: #fff;
+      width: 150px;
+      float: right;
+      text-align: right;
+      cursor: pointer;
+      margin-bottom: 5px;
+      position: absolute;
+      top: 0;
+      right: 11px;
+      z-index: 999999; }
+
+.modalNotification2 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 9999;
+  background: #1f1111ad; }
+  .modalNotification2 .notification {
+    max-width: 460px;
+    margin: 0px auto;
+    padding: 10px;
+    margin-top: 75px;
+    background: #888;
+    box-shadow: 0px 0px 4px 1px #888;
+    overflow: hidden; }
+    .modalNotification2 .notification .img {
+      height: 580px;
+      width: 100%; }
+    @media (max-width: 720px) {
+      .modalNotification2 .notification {
+        width: 90%;
+        margin-top: 20px; } }
+    .modalNotification2 .notification img {
+      width: 100%;
+      border: 1px solid #ccc; }
+      @media (max-width: 720px) {
+        .modalNotification2 .notification img {
+          width: 100%;
+          max-width: 650px; } }
+    .modalNotification2 .notification .closenoti {
+      color: #fff;
+      width: 100%;
+      float: right;
+      text-align: right;
+      cursor: pointer;
+      margin-bottom: 5px; }
+
+.modalEmployees .lstemployees {
+  width: 100%; }
+  .modalEmployees .lstemployees .item {
+    width: 20%;
+    float: left;
+    position: relative;
+    text-align: center;
+    margin-bottom: 10px; }
+    @media (max-width: 992px) {
+      .modalEmployees .lstemployees .item {
+        width: calc(100%/3); } }
+    @media (max-width: 480px) {
+      .modalEmployees .lstemployees .item {
+        width: calc(100%/2); } }
+    .modalEmployees .lstemployees .item img {
+      border: 1px solid #b7acac; }
+    .modalEmployees .lstemployees .item .name {
+      font-size: 10px;
+      text-align: center;
+      line-height: 30px;
+      color: #767676; }
+    .modalEmployees .lstemployees .item input {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      z-index: 9; }
+      @media (max-width: 480px) {
+        .modalEmployees .lstemployees .item input {
+          right: 20%; } }
+    .modalEmployees .lstemployees .item.select img {
+      border-color: #6dac45; }
+    .modalEmployees .lstemployees .item.select .name {
+      color: #6dac45; }
+
+.modal_preview_gift_card .modal-header ul {
+  padding-left: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0; }
+  .modal_preview_gift_card .modal-header ul li {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+    .modal_preview_gift_card .modal-header ul li .icon {
+      margin-right: 5px;
+      line-height: 30px;
+      width: 30px;
+      height: 30px;
+      text-align: center; }
+    .modal_preview_gift_card .modal-header ul li p {
+      margin-bottom: 0;
+      font-size: 15px;
+      line-height: 30px;
+      color: #767676; }
+    .modal_preview_gift_card .modal-header ul li h3 {
+      text-transform: uppercase;
+      color: #000; }
+    .modal_preview_gift_card .modal-header ul li a {
+      color: #767676; }
+      .modal_preview_gift_card .modal-header ul li a:hover {
+        text-decoration: none; }
+    .modal_preview_gift_card .modal-header ul li ul li {
+      width: 50%;
+      float: left;
+      text-align: center; }
+
+.modal_preview_gift_card .modal-body ul {
+  padding-left: 0; }
+  .modal_preview_gift_card .modal-body ul li {
+    width: 100%;
+    list-style: none; }
+    .modal_preview_gift_card .modal-body ul li p {
+      margin-bottom: 0; }
+    .modal_preview_gift_card .modal-body ul li h3 {
+      font-size: 18px;
+      font-family: 'Playball', cursive;
+      font-weight: 600;
+      color: #000;
+      font-size: 25px; }
+    .modal_preview_gift_card .modal-body ul li img {
+      text-align: center;
+      max-width: 100%;
+      margin: 50px auto 0;
+      clear: both;
+      display: block; }
+    .modal_preview_gift_card .modal-body ul li ul {
+      padding-left: 0; }
+      .modal_preview_gift_card .modal-body ul li ul li {
+        list-style: none;
+        width: 50%;
+        float: left; }
+    .modal_preview_gift_card .modal-body ul li.footer {
+      text-align: center; }
+    .modal_preview_gift_card .modal-body ul li.desc {
+      margin: 20px 0 10px; }
+      .modal_preview_gift_card .modal-body ul li.desc p {
+        font-size: 15px;
+        color: #000;
+        margin-bottom: 10px; }
+
+.modalFinish .modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -15px;
+  width: 100%; }
+
+.modalFinish .modal-confirm .icon-box {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -70px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  z-index: 9;
+  background: #82ce34;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1); }
+  .modalFinish .modal-confirm .icon-box i {
+    font-size: 58px;
+    position: relative;
+    top: 3px; }
+
+.modalFinish .modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #82ce34;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none; }
+
+.modalFinish .modal-confirm .modal-header {
+  border-bottom: none;
+  position: relative; }
+
+.modalFinish .modal-confirm .modal-body {
+  position: relative;
+  padding: 15px; }
+
+.modalFinish .modal-confirm .modal-footer {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px; }
+
+.modalFinishError .modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -15px;
+  width: 100%; }
+
+.modalFinishError .modal-confirm .icon-box {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -70px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  z-index: 9;
+  background: #e03445;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1); }
+  .modalFinishError .modal-confirm .icon-box i {
+    font-size: 58px;
+    position: relative;
+    top: 3px; }
+
+.modalFinishError .modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #e03445;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none; }
+
+.modalFinishError .modal-confirm .modal-header {
+  border-bottom: none;
+  position: relative; }
+
+.modalFinishError .modal-confirm .modal-body {
+  position: relative;
+  padding: 15px; }
+
+.modalFinishError .modal-confirm .modal-footer {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px; }

@@ -1,0 +1,35 @@
+.page-order .table > thead > tr > th {
+  border-top: 0; }
+
+.page-order .table > tbody > tr > td, .page-order .table > tfoot > tr > td {
+  vertical-align: middle; }
+  .page-order .table > tbody > tr > td.actions, .page-order .table > tfoot > tr > td.actions {
+    text-align: center; }
+
+.page-order .table > tbody tr td img {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
+.page-order .table > tbody tr td.Subtotal {
+  text-align: center; }
+
+@media (max-width: 992px) {
+  .page-order .table > tbody tr td .order-img {
+    display: none; } }
+
+.page-order .table > tbody tr td .order-name .price-info .Price {
+  color: #808080c4;
+  font-size: 14px; }
+
+.page-order .table > tbody tr td .order-name .price-info.desktop {
+  display: block; }
+  @media (max-width: 992px) {
+    .page-order .table > tbody tr td .order-name .price-info.desktop {
+      display: none; } }
+
+.page-order .table > tbody tr td .order-name .price-info.mobile {
+  display: none; }
+  @media (max-width: 992px) {
+    .page-order .table > tbody tr td .order-name .price-info.mobile {
+      display: block; } }

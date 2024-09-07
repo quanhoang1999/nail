@@ -1,0 +1,24 @@
+.btn-add-product {
+  color: #9ea3ff;
+  padding: 6px 12px;
+  border: 1px solid #9ea3ff;
+  border-radius: 30px;
+  font-size: 16px;
+  text-transform: uppercase;
+  background: transparent;
+  font-weight: unset;
+  margin-right: 20px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  .btn-add-product:last-child {
+    margin-right: 0; }
+  .btn-add-product:hover {
+    background-image: linear-gradient(to right, #9ea3ff, #ffb0f8);
+    border: 1px solid transparent;
+    outline: unset;
+    color: #fff;
+    border-right: 1px solid #feccf9; }
+  .btn-add-product:focus {
+    outline: 0;
+    box-shadow: none; }

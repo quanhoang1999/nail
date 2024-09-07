@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  cms.webapp:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+networks:
+  default:
+    external:
+      name: nat

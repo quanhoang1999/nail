@@ -1,0 +1,19 @@
+﻿@model List<serviceGroup>;
+@{
+    ViewData["PageTitle"] = "serviceGroup";
+    ViewData["SeoKeywords"] = "serviceGroup";
+    ViewData["SeoDescription"] = "serviceGroup";
+
+}
+@foreach (var p in Model)
+{
+    <div class="item">
+        <div class="product-buy-click" id="bookingParentService">
+            <img src="@p.serviceGroupIcon" />
+            <input hidden type="checkbox" data-id="@p.serviceGroupId" />
+
+        </div>
+        <h3> <i hidden class="ti-check"></i> @p.serviceGroupName</h3>
+    </div>
+
+}

@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "defaultDestination": "wwwroot/lib",
+  "libraries": [
+    {
+      "library": "notify@0.4.2",
+      "destination": "wwwroot/lib/notify"
+    },
+    {
+      "library": "font-awesome@5.11.2",
+      "destination": "wwwroot/lib/font-awesome"
+    },
+    {
+      "library": "popper.js@1.16.0",
+      "destination": "wwwroot/lib/popper"
+    },
+    {
+      "library": "moment.js@2.24.0",
+      "destination": "wwwroot/lib/moment"
+    },
+    {
+      "library": "bootstrap-daterangepicker@3.0.5",
+      "destination": "wwwroot/lib/bootstrap-daterangepicker"
+    },
+    {
+      "library": "ckeditor@4.12.1",
+      "destination": "wwwroot/lib/ckeditor"
+    },
+    {
+      "library": "nprogress@0.2.0",    
+      "destination": "wwwroot/lib/nprogress"
+    },
+    {
+      "library": "fastclick@1.0.6",
+      "destination": "wwwroot/lib/fastclick"
+    },
+    {
+      "library": "mustache.js@3.1.0",
+      "destination": "wwwroot/lib/mustache"
+    },
+    {
+      "library": "Chart.js@2.9.3",
+      "destination": "wwwroot/lib/Chart.js"
+    },
+    {
+      "library": "twbs-pagination@1.4.2",
+      "destination": "wwwroot/lib/twbs-pagination"
+    },
+    {
+      "library": "bootbox.js@5.3.4",
+      "destination": "wwwroot/lib/bootbox"
+    },
+    {
+      "library": "jquery-sparklines@2.1.2",
+      "destination": "wwwroot/lib/jquery-sparklines"
+    },
+    {
+      "library": "jquery-treegrid@0.2.0",
+      "destination": "wwwroot/lib/jquery-treegrid"
+    },
+    {
+      "library": "bootstrap-tagsinput@0.8.0",
+      "destination": "wwwroot/lib/bootstrap-tagsinput"
+    },
+    {
+      "library": "bootstrap-datepicker@1.9.0",
+      "destination": "wwwroot/lib/bootstrap-datepicker"
+    },
+    {
+      "library": "bootstrap-select@1.13.16",
+      "destination": "wwwroot/lib/bootstrap-select"
+    },
+    {
+      "library": "bootstrap-timepicker@0.5.2",
+      "destination": "wwwroot/lib/bootstrap-timepicker"
+    }
+  ]
+}

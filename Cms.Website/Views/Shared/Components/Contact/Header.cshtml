@@ -1,0 +1,19 @@
+﻿
+@model ContactViewModel
+@if (Model != null)
+{
+    <div class="col-12 col-md-4 col-lg-3">
+        <ul class="header-top-list">
+            <li class="phone-number">
+                <a href="tel:@Model.Phone">
+                    <i class="fa fa-volume-control-phone"></i>
+                    <span>@Model.Phone</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-12 col-md-8 col-lg-9 header-quote">
+        <p>SIGN UP TO RECEIVE FUTURE PROMOTIONS & BIRTHDAY GIFTS</p>
+        <a href="/sign-in" class="quote-btn main-btn">Sign up</a>
+    </div>
+}

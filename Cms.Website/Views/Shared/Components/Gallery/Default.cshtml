@@ -1,0 +1,45 @@
+﻿@model PagedResult<GalleryViewModel>
+@if (Model != null && Model.Results != null && Model.Results.Count()>0)
+{
+    <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="col-banner-img">
+            <a href="#" class="item item-large">
+                <div class="img img1" style="background-image: url('@Model.Results[0].FileFullUrl');"></div>
+                <div class="hover-banner"></div>
+                <div class="view-col">
+                    <div class="title-hover-col">
+                        <h3>@Model.Results[0].Name</h3>
+                    </div>
+                    <button type="button" class="btn-view-col">Read more</button>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="col-banner-img">
+            <a href="#" class="item item-thumb">
+                <div class="img img2" style="background-image: url('@Model.Results[1].FileFullUrl');"></div>
+                <div class="hover-banner"></div>
+                <div class="view-col">
+                    <div class="title-hover-col">
+                        <h3>@Model.Results[1].Name</h3>
+                    </div>
+                    <button type="button" class="btn-view-col">Read more</button>
+                </div>
+            </a>
+        </div>
+        <div class="col-banner-img">
+            <a href="#" class="item item-thumb">
+                <div class="img img2" style="background-image: url('@Model.Results[2].FileFullUrl');"></div>
+                <div class="hover-banner"></div>
+                <div class="view-col">
+                    <div class="title-hover-col">
+                        <h3>@Model.Results[2].Name</h3>
+                    </div>
+                    <button type="button" class="btn-view-col">Read more</button>
+                </div>
+            </a>
+        </div>
+    </div>
+
+}

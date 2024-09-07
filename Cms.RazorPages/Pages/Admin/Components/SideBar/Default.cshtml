@@ -1,0 +1,28 @@
+﻿@model List<Cms.Service.Systems.Functions.Dtos.FunctionViewModel>
+
+<div id="main-menu" class="main-menu collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+        @foreach (var item in Model.Where(x => x.ParentId.HasValue == false))
+        {
+            <li class="menu-item-has-children dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa @item.CssClass"></i> @item.Name</a>
+                @if (Model.Any(x => x.ParentId == item.Id))
+                {
+                    <ul class="sub-menu children dropdown-menu">
+                        @foreach (var jitem in Model.Where(x => x.ParentId == item.Id))
+                        {
+                            <li><i class="fa @jitem.CssClass"></i><a href="@jitem.URL">@jitem.Name</a></li>
+
+                        }
+                    </ul>
+
+                }
+
+            </li>
+
+        }
+
+
+
+    </ul>
+</div>

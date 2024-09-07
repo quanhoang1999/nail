@@ -1,0 +1,114 @@
+﻿@model SlideViewModel
+@{
+    ViewData["Title"] = "Product management";
+}
+@section Styles{
+
+}
+@section Scripts{
+
+
+    <environment names="Development">
+
+
+        <script src="~/app/controllers/slide/slideedit.js" asp-append-version="true"></script>
+        <script>
+            var slideId = @ViewBag.SlideId;
+            var slide = new slideEditController();
+            slide.initialize();
+        </script>
+    </environment>
+    <environment names="Staging,Production">
+        <script>
+            var slide = new slideEditController();
+            slide.initialize();</script>
+    </environment>
+}
+
+<input type="hidden" id="hid-category-id" value="0" />
+<div class="">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>
+                Slide
+                <small>
+                    <i class="fa fa-arrow-circle-left"></i>
+                    <a href="/Admin/slide">Back</a>
+                </small>
+            </h3>
+
+        </div>
+        <div class="col-md-6 text-right">
+
+
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="horizontal-form">
+                        <form class="form-horizontal" role="form" id="frmMaintainance">
+                            <div class="form-group row">
+                                <input type="hidden" id="hidIdM" asp-for="Id" />
+                                <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Tiêu đề</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="txtNameM" asp-for="Name" class="form-control" id="txtNameM">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="txtDescM" class="col-sm-2 control-label no-padding-right">Mô tả</label>
+                                <div class="col-sm-10">
+                                    <textarea rows="4" name="txtDescM" class="form-control" id="txtDescM"></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="txtImageM" class="col-sm-2 control-label no-padding-right">Hình ảnh</label>
+                                <div class="col-sm-6">
+                                    @*<input type="text" name="txtImage" readonly class="form-control" id="txtImage" />*@
+                                    <input type="hidden" id="hdImage" asp-for="Image" />
+                                    <input type="file" id="fileInputImage" style="display:none" />
+                                    <button type="button" id="btnSelectImg" class="btn btn-sm btn-primary">Attach file</button>
+                                    <img width="100" id="image_upload_preview" />
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" checked="checked" id="ckStatusM">
+                                            <span class="text">Active.</span>
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2"></div>
+                                <div class="col-sm-10">
+                                    <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+                                    <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

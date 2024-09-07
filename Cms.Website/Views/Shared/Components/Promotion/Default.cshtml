@@ -1,0 +1,17 @@
+﻿@model NailPromotionViewModel
+@{
+    ViewData["Title"] = "Default";
+}
+
+@if (Model != null)
+{
+    string url = Model.ImageFullUrl;
+    <div id="modalNotification" class="modalNotification2">
+        <div id="notification" class="notification">
+            <div id="closenoti" class="closenoti">[X] Close</div>
+            <!-- <img src="./images/promotion/venus-opening.jpg" alt="promotion"> -->
+            <div class="img"
+                 style="background: url(@url) 50% 49%/contain no-repeat;"></div>
+        </div>
+    </div>
+}

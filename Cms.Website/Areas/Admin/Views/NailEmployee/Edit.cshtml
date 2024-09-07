@@ -1,0 +1,123 @@
+﻿
+@model NailEmployeeViewModel
+@{
+    ViewData["Title"] = "Nail employee";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <script src="~/lib/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/lib/moment/moment.js"></script>
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/app/controllers/nailemployee/detail.js" asp-append-version="true"></script>
+    <script>
+
+        var review = new NailEmployeeEditController();
+        review.initialize();
+    </script>
+
+
+}
+
+
+
+
+<input type="hidden" id="hid-category-id" value="0" />
+<div class="">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>
+                Employee
+                <small>
+                    <i class="fa fa-arrow-circle-left"></i>
+                    <a href="/Admin/nailemployee">Back</a>
+                </small>
+            </h3>
+
+        </div>
+        <div class="col-md-6 text-right">
+
+
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <div class="form-group row">
+                            <input type="hidden" id="hidIdM" asp-for="Id" />
+                            <input type="hidden" id="hidImage" asp-for="AvatarFullUrl" />
+                            <label for="txtNameM" class="col-sm-2 control-label no-padding-right">First name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtNameM" asp-for="Name" class="form-control" id="txtNameM">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <label for="txtShortname" class="col-sm-2 control-label no-padding-right">Short name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtShortname" asp-for="ShortName" class="form-control" id="txtShortname">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="txtPhone" class="col-sm-2 control-label no-padding-right">Phone number</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtPhone" asp-for="PhoneNumber" class="form-control" id="txtPhone">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="txtAddress" class="col-sm-2 control-label no-padding-right">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtAddress" asp-for="Address" class="form-control" id="txtAddress">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="NailStoreId" class="col-sm-2 control-label no-padding-right">Store</label>
+                            <div class="col-sm-10">
+                                <select asp-for="NailStoreId" id="slNailStoreId" asp-items="@(new SelectList(ViewBag.NailStore,"Id","Name"))">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Avatar" class="col-sm-2 control-label no-padding-right"></label>
+                            <div class="col-sm-6">
+                                @*<input type="text" name="txtImage" readonly class="form-control" id="txtImage" />*@
+                                <input type="file" id="fileInputImage" style="display:none" />
+                                <button type="button" id="btnSelectImg" class="btn btn-sm btn-primary">Attach file</button>
+                                <img width="100" id="image_upload_preview" />
+
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <div class="col-sm-10">
+                                <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

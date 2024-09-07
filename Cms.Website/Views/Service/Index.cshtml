@@ -1,0 +1,138 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
+@using Microsoft.AspNetCore.Http
+@model List<NailCategoryViewModel>;
+@{
+    ViewData["PageTitle"] = "Hướng dẫn mua hàng";
+    ViewData["SeoKeywords"] = "Hướng dẫn mua hàng";
+    ViewData["SeoDescription"] = "Hướng dẫn mua hàng";
+
+    ViewData["Title"] = "Services";
+
+    var idReuqest = ViewBag.IDReuqest;
+}
+
+<section class="main services">
+    <div class="container groupservices">
+        <h2 class="title">Our Services: @ViewData["MyTitle"]</h2>
+        @foreach (var p in Model)
+        {
+            var position = Model.IndexOf(p);
+            <div class="row servicesbox" data-ifd="@p.Id">
+                @if (position % 2 == 0)
+                {
+
+                    <div class="col-12 col-md-4 col-lg-4 hidden_m">
+                        <div class="servicesimg servicesimg1">
+                            @if (p.Images.Count >= 1)
+                            {<img src="@Url.Content(p.Images.Count>0? p.Images[0]:"")" width="220" alt="manicure pedicure">}
+                            @if (p.Images.Count >= 2)
+                            {
+                                <img src="@Url.Content(p.Images.Count>0? p.Images[1]:"")" width="130" alt="manicure pedicure" class="servicesimg2">
+                            }
+
+                        </div>
+                        <div class="servicesimg">
+                            @if (p.Images.Count >= 3)
+                            {
+                                <img src="@Url.Content(p.Images[2])" width="220" alt="manicure pedicure">
+                                // <img src="@Url.Content(p.Images[3])" width="130" alt="manicure pedicure" class="servicesimg2">
+                            }
+                            @if (p.Images.Count >= 4)
+                            {
+                                <img src="@Url.Content(p.Images[3])" width="130" alt="manicure pedicure" class="servicesimg2">
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col-12 hidden_desktop">
+                        @*<div class="servicesimg-mobile">
+                                <img src="@Url.Content(p.Item.Images[0])" alt="manicure pedicure">
+                            </div>*@
+                        <div class="servicesimg-mobile" style="background-image: url('@Url.Content(p.Images.Count>0? p.Images[0]:"")');">
+                        </div>
+                    </div>
+
+                }
+                @if (position % 2 == 1)
+                {
+                    <div class="col-12 hidden_desktop">
+                        <div class="servicesimg-mobile" style="background-image: url('@Url.Content(p.Images.Count>0? p.Images[0]:"")');">
+                        </div>
+                        @*<div class="servicesimg-mobile">
+                                <img src="@Url.Content(p.Item.Images[0])" alt="manicure pedicure">
+                            </div>*@
+                    </div>
+
+                }
+
+                <div class="col-12 col-md-8 col-lg-8 servicescontent">
+                    <div class="servicestitle">@p.Name</div>
+                    @Html.Raw(p.Description)
+                    <ul class="lstservice">
+                        @foreach (var c in p.NailServices)
+                        {
+                            <li class="item">
+                                @c.Name
+
+                                <div class="price">$@c.SalePrice @c.NotePrice</div>
+                                <div class="note f-s-d">@Html.Raw(c.Description)</div>
+                            </li>
+
+                        }
+
+                    </ul>
+                </div>
+
+                @if (position % 2 == 1)
+                {
+                    <div class="col-12 col-md-4 col-lg-4 hidden_m">
+                        <div class="servicesimg servicesimg1">
+                            @if (p.Images.Count >= 1)
+                            {
+                                <img src="@Url.Content(p.Images.Count>0? p.Images[0]:"")" width="220" alt="manicure pedicure">
+
+                            }
+                            @if (p.Images.Count >= 2)
+                            {
+                                <img src="@Url.Content(p.Images[1])" width="130" alt="manicure pedicure" class="servicesimg2">
+                            }
+
+
+                        </div>
+                        <div class="servicesimg">
+                            @if (p.Images.Count >= 3)
+                            {
+                                <img src="@Url.Content(p.Images[2])" width="220" alt="manicure pedicure">
+                                //
+                            }
+                            @if (p.Images.Count >= 4)
+                            {
+                                <img src="@Url.Content(p.Images[3])" width="130" alt="manicure pedicure" class="servicesimg2">
+                            }
+
+                        </div>
+
+                    </div>
+                }
+            </div>
+            <div class="borderservices">
+                <img src="~/frontend/images/bg_services.png" alt="">
+            </div>
+        }
+
+    </div>
+</section>
+@section Scripts {
+    <script>
+
+
+        var elmnt = document.querySelector('div[data-ifd="@idReuqest"]');
+        $offset = -100 * 1 || 0,
+            $speed = 200 * 1 || 500;
+        $('html, body').animate({
+            scrollTop: $(elmnt).offset().top + $offset
+        }, $speed);
+    </script>
+}
+

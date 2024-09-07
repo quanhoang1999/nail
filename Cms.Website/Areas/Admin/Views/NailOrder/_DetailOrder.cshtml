@@ -1,0 +1,58 @@
+﻿<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                    <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Add edit product</h4>
+                </div>*@
+            <div class="modal-header">
+                <h4 class="modal-title">Booking Detail</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="pull-left title-child">Booking Date: </h5>
+                        <input readonly class="form-control-plaintext" id="lblBookingDate" type="text" />
+                        <div class="m-b-5  p-b-5">
+                            Message: <input readonly class="form-control-plaintext" type="text" id="lblMessage" />
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="pull-right p-r-10 title-child">Appointment Date: </h5>
+                        <input id="lblAppointmentDate" readonly class="form-control-plaintext" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Service Name</th>
+                                    <th>Sale Price</th>
+                                    <th>Tech Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-content-detail"></tbody>
+                        </table>
+                        <!--Pagination-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template-detail" type="x-tmpl-mustache">
+    <tr>
+        <td>{{No}}</td>
+        <td>{{Name}}</td>
+        <td>{{SalePrice}}</td>
+        <td>{{TechName}}</td>
+
+
+    </tr>
+</script>

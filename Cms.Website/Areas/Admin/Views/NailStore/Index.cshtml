@@ -1,0 +1,139 @@
+﻿
+
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+
+    
+   
+        <script src="~/app/controllers/nailstore/index.js" asp-append-version="true"></script>
+        <script>
+            var nailStore = new NailStoreController();
+            nailStore.initialize();</script>
+
+
+
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h3 class="pull-left">
+            Store
+        </h3>
+
+    </div>
+    <div class="col-md-6 text-right">
+
+        @*<div class="dropdown dropdown-inline">
+                <button type="button" class="btn btn-default btn-icon-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-edit"></i> Action
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="~/templates/ProductImportTemplate.xlsx"><i class="fas fa-file-alt"></i> Template</a>
+                    <a class="dropdown-item" id="btn-import"><i class="fas fa-file-excel"></i> Import</a>
+                    <a class="dropdown-item" id="btn-export"><i class="fas fa-download"></i> Export</a>
+                </div>
+            </div>*@
+        <a id="btnCreate" href="/admin/nailstore/edit" class="btn btn-brand btn-elevate btn-icon-sm">
+            <i class="fa fa-plus"></i>
+            New Record
+        </a>
+
+    </div>
+</div>
+
+
+<div class="clearfix"></div>
+<div class="x_panel">
+    <div class="x_content">
+        <div class="row">
+            <div class="col-md-12 pull-right">
+                <div class="row">
+                    <div class="col-md-2 col-sm-5 col-xs-12 form-group fa-pull-left">
+                        <div class="form-group has-search">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            <input id="txtKeyword" type="text" class="form-control" placeholder="Search">
+                        </div>
+
+                    </div>
+                    @*<div class="col-md-2 col-sm-12  form-group pull-right">
+                        <select class="form-control" id="slSearchType">
+                            <option>--Select--</option>
+                            <option value="1">Phone number</option>
+                            <option value="2">Name</option>
+                        </select>
+                    </div>*@
+                    <div class="col-md-2 col-sm-12 form-group">
+                        <button class="btn btn-primary" id="btnSearch" type="button">Search</button>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-right">
+                        @*<div class="dropdown dropdown-inline">
+                                <button type="button" class="btn btn-default btn-icon-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-edit"></i> Action
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="~/templates/ProductImportTemplate.xlsx"><i class="fas fa-file-alt"></i> Template</a>
+                                    <a class="dropdown-item" id="btn-import"><i class="fas fa-file-excel"></i> Import</a>
+                                    <a class="dropdown-item" id="btn-export"><i class="fas fa-download"></i> Export</a>
+                                </div>
+                            </div>
+                            <button id="btnCreate" class="btn btn-brand btn-elevate btn-icon-sm">
+                                <i class="fa fa-plus"></i>
+                                New Record
+                            </button>*@
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                           
+                            <th>Created date</th>
+                            <th width="20%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                </table>
+                <!--Pagination-->
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                            <ul id="paginationUL"></ul>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{{Image}}}</td>
+        <td>{{Name}}</td>
+        <td>{{CreatedDate}}</td>
+        @*<td>{{{Status}}}</td>*@
+        <th scope="row">
+            <a class="btn btn-clean btn-icon btn-sm  btn-edit" href="/admin/nailstore/edit/{{Id}}"><i class="far fa-edit"></i></a>
+            <a class="btn btn-clean btn-icon btn-sm  btn-delete" data-id="{{Id}}"><i class="far fa-trash-alt"></i></a>
+            @*<a class="btn btn-clean btn-icon btn-sm  btn-copy" data-name="{{Name}}" data-id="{{Id}}"><i class="fas fa-copy"></i></a>*@
+        </th>
+    </tr>
+</script>
+

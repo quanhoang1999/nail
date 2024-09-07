@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = Model.Blog.Name;
+    ViewData["MetaKeyword"] = Model.Blog.SeoKeywords;
+    ViewData["MetaDescription"] = Model.Blog.SeoDescription;
+}
+
+
+<section class="banner-page">
+    <div class="banner">
+        <div class="page-title">
+            <h1>Investing Opportunities</h1>
+            <span class="page-subtitle">Become a Part of a Growing and Thriving Industry</span>
+        </div>
+    </div>
+</section>
+
+<section class="main news-details">
+    <div class="container page-detail">
+        <article>
+            <div class="article-body">
+                <header class="section-header">
+                    <div class="section-header-left">
+                        <h1>@Model.Blog.Name</h1>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="article-date-comment">
+                                    <div class="date">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i> @Model.Blog.DateCreated.ToString("dd/MM/yyyy")
+                                    </div>
+                                    @*<div class="comment">
+                                            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                            <span class="fb-comments-count">
+                                                <span class="fb_comments_count">0</span>
+                                            </span>
+                                        </div>*@
+                                    <div class="author">
+                                        <i class="fa fa-user" aria-hidden="true"></i> @Model.Blog.Name
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="article-content">
+                    <p>
+                        @Model.Blog.Description
+                    </p>
+
+                    @Html.Raw(Model.Blog.Content)
+                </div>
+            </div>
+            @*<div class="related-articles">
+                    <div class="related-articles-head">
+                        <h3>
+                            Related News
+                        </h3>
+                    </div>
+                    <div class="related-articles-body">
+                        <ul class="no-bullets">
+                            <li>
+                                <a href="#">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>*@
+        </article>
+    </div>
+</section>

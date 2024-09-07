@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["PageTitle"] = "Service";
+    ViewData["SeoKeywords"] = "Service";
+    ViewData["SeoDescription"] = "Service";
+}
+@foreach (var p in Model)
+{
+    <div class="product-item">
+        <div class="product-info ">
+            <div class="product-title">
+                <a href="/Service/request?id=@p.Id">@p.Name</a>
+            </div>
+        </div>
+        <div class="product-image">
+            <a href="/Service/request?id=@p.Id">
+
+                <img src="@Url.Content(p.DefaultImage)" alt="Enhancements"
+                     class="img-thumbnail">
+                <div class="product-overlay"></div>
+            </a>
+        </div>
+        <div class="product-info text-center">
+            <div class="decs clearfix">
+                @Html.Raw(p.Description)
+            </div>
+            <a href="/Service/request?id=@p.Id" class="more">More</a>
+        </div>
+    </div>
+
+}

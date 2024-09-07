@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+   
+}
+@section Scripts{
+   
+
+    <environment names="Development">
+     
+        <script src="~/app/controllers/product/producttags.js" asp-append-version="true"></script>
+        <script>
+            var productTags = new productTagsController();
+            productTags.initialize();</script>
+    </environment>
+    <environment names="Staging,Production">
+        <script>
+            var productTags = new productTagsController();
+            productTags.initialize();</script>
+    </environment>
+
+
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item"><a href="/admin/product">Sản phẩm</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tags sản phẩm</li>
+    </ol>
+</nav>
+
+<div class="clearfix"></div>
+
+<div class="x_panel">
+    <div class="x_content">
+        <div class="row">
+            <div class="col-md-12 pull-right">
+                <div class="row">
+                    <div class="col-md-2 col-sm-5 col-xs-12 form-group fa-pull-left">
+                        <div class="form-group has-search">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            <input id="txtKeyword" type="text" class="form-control" placeholder="Search">
+                        </div>
+
+                    </div>
+                 
+                    <div class="col-md-2 col-sm-12 form-group">
+                        <button class="btn btn-primary" id="btnSearch" type="button">Go!</button>
+                    </div>
+                  
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+
+                            <th>Tag</th>
+                            <th>Sản phẩm đã tag</th>                           
+                           
+                            <th width="20%">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                </table>
+                <!--Pagination-->
+                <div class="row">
+                    @*<div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                <select id="ddlShowPage">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    bản ghi/trang.
+                                </span>
+                                Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
+                            </div>
+                        </div>*@
+                    <div class="col-sm-12">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                            <ul id="paginationUL"></ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+
+        <td>{{Name}}</td>
+        <td>{{TagType}}</td>
+       
+      
+        <th scope="row">
+            <div class="dropdown dropdown-inline">
+                <a data-toggle="dropdown" class="btn btn-sm btn-clean btn-icon btn-icon-sm" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a data-id="{{Id}}" class="dropdown-item btn btn-sm btn-clean btn-images"><i class="fa fa-image"></i> Hình ảnh</a>
+                    <a data-id="{{Id}}" class="dropdown-item btn btn-sm btn-clean btn-quantity"><i class="far fa-hourglass"></i> Số lượng</a>
+                    <a data-id="{{Id}}" class="dropdown-item btn btn-sm btn-clean btn-whole-price"><i class="fas fa-money-bill"></i> Generate Report</a>
+                </div>
+            </div>
+            <a class="btn btn-clean btn-icon btn-sm  btn-edit" data-id="{{Id}}"><i class="far fa-edit"></i></a>
+            <a class="btn btn-clean btn-icon btn-sm  btn-delete" data-id="{{Id}}"><i class="far fa-trash-alt"></i></a>
+
+        </th>
+    </tr>
+</script>

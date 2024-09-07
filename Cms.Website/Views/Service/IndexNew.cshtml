@@ -1,0 +1,109 @@
+﻿@model List<serviceGroup>;
+@{
+    ViewData["Title"] = "Service";
+    ViewData["PageTitle"] = "serviceGroup";
+    ViewData["SeoKeywords"] = "serviceGroup";
+    ViewData["SeoDescription"] = "serviceGroup";
+    int idReuqest = ViewBag.IDReuqest;
+}
+
+<section class="main services">
+    <div class="container groupservices">
+        <h2 class="title">Our Services: @ViewData["MyTitle"]</h2>
+        @foreach (var p in Model)
+        {
+
+            <div class="row servicesbox" data-ifd="@p.serviceGroupId">
+                @if (p.orderIndexGroup % 2 == 0)
+                {
+
+                    <div class="col-12 col-md-4 col-lg-4 hidden_m">
+                        <div class="servicesimg servicesimg1">
+                            @if (!string.IsNullOrEmpty(p.serviceGroupIcon))
+                            {
+                                <img src="@p.serviceGroupIcon" width="220" alt="manicure pedicure">
+
+                            }
+                            @if (!string.IsNullOrEmpty(p.serviceGroupIcon1))
+                            {
+                                <img src="@p.serviceGroupIcon1" width="130" alt="manicure pedicure" class="servicesimg2">
+
+                            }
+                        </div>
+                    </div>
+                    <div class="col-12 hidden_desktop">
+                        @*<div class="servicesimg-mobile">
+                                <img src="@Url.Content(p.Item.Images[0])" alt="manicure pedicure">
+                            </div>*@
+                        <div class="servicesimg-mobile" style="background-image: url('@p.serviceGroupIcon');">
+                        </div>
+                    </div>
+
+                }
+                @if (p.orderIndexGroup % 2 == 1)
+                {
+                    <div class="col-12 hidden_desktop">
+                        <div class="servicesimg-mobile" style="background-image: url('@p.serviceGroupIcon');">
+                        </div>
+                        @*<div class="servicesimg-mobile">
+                                <img src="@Url.Content(p.Item.Images[0])" alt="manicure pedicure">
+                            </div>*@
+                    </div>
+
+                }
+
+                <div class="col-12 col-md-8 col-lg-8 servicescontent">
+                    <div class="servicestitle">@p.serviceGroupName</div>
+                    <ul class="lstservice">
+                        @foreach (var c in p.services)
+                        {
+                            <li class="item">
+                                @c.serviceName
+                                <div class="price">$@c.servicePrice @c.notePrice</div>
+                                <div class="note f-s-d">@Html.Raw(c.description)</div>
+                            </li>
+
+                        }
+
+                    </ul>
+                </div>
+
+                @if (p.orderIndexGroup % 2 == 1)
+                {
+                    <div class="col-12 col-md-4 col-lg-4 hidden_m">
+                        <div class="servicesimg servicesimg1">
+                            @if (!string.IsNullOrEmpty(p.serviceGroupIcon))
+                            {
+                                <img src="@p.serviceGroupIcon" width="220" alt="manicure pedicure">
+
+                            }
+                            @if (!string.IsNullOrEmpty(p.serviceGroupIcon1))
+                            {
+                                <img src="@p.serviceGroupIcon1" width="130" alt="manicure pedicure" class="servicesimg2">
+
+                            }
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="borderservices">
+                <img src="~/images/bg_services.png" alt="">
+            </div>
+
+
+        }
+    </div>
+</section>
+@section Scripts {
+    <script>
+
+        var elmnt = document.querySelector('div[data-ifd="@ViewBag.IDReuqest"]');
+        $offset = -100 * 1 || 0,
+            $speed = 200 * 1 || 500;
+        $('html, body').animate({
+            scrollTop: $(elmnt).offset().top + $offset
+        }, $speed);
+    </script>
+}

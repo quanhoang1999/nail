@@ -1,0 +1,80 @@
+﻿@model  List<NailPromotionViewModel>
+@{
+    ViewData["Title"] = "Promotion";
+}
+
+@section Scripts{
+    <link rel="stylesheet" href="~/frontend/css/print.min.css">
+    <script type="text/javascript" src="~/frontend/js/print.min.js"></script>
+    <script type="text/javascript" src="/frontend/js/clipboard.min.js"></script>
+    <script>
+        var btns = document.querySelectorAll('button');
+        var clipboard = new ClipboardJS(btns);
+        clipboard.on('success', function (e) {
+            console.log(e);
+        });
+        clipboard.on('error', function (e) {
+            console.log(e);
+        });
+    </script>
+    <script>
+
+        function PrintShare(element) {
+            $('#foo').val(element);
+        }
+
+    </script>
+}
+
+<section class="main promotions">
+    <div class="container">
+        <h2 class="title">Promotions:</h2>
+        @foreach (var item in Model)
+        {
+            <div class="list-group-promotion">
+                <div class="item">
+                    <div class="proimg">
+                        <img src="@Url.Content(item.ImageFullUrl)" alt="promotion" />
+                    </div>
+                    <a onclick="printJS('@Url.Content(item.ImageFullUrl)', 'image');return false;">
+                        <img id="btnPrint" src="@Url.Content("/frontend/images/promotion/print.png")" alt="promotion" />
+                    </a>
+                    <a data-toggle="modal" onclick="PrintShare('@Url.Content(item.ImageFullUrl)')" data-target="#myModal">
+                        <input type="hidden" id="@item.Name" />
+                        <img id="btnShare" src="@Url.Content("/frontend/images/promotion/share.jpg")" alt="share" />
+                    </a>
+
+                </div>
+            </div>
+        }
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" id="foo" class="form-control"
+                                       value="" placeholder="Some path">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" data-clipboard-target="#foo"
+                                            title="Copy to Clipboard">
+                                        Copy
+                                    </button>
+                                </span>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+

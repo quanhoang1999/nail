@@ -1,0 +1,11 @@
+﻿@using Cms.Data.View;
+@model List<NailCategoryViewModel>
+
+@foreach (var p in Model)
+{
+    <li><a href="/Service/request?id=@p.Id">@p.Name</a></li>
+}
+
+
+
+

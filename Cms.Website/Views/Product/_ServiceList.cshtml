@@ -1,0 +1,74 @@
+﻿
+@model List<ProductViewModel>;
+
+<div class="row">
+    <div id="slider-product-gift" class="col-12">
+        @foreach (var p in Model)
+        {
+            <div class="product-image">
+                <a class="egiftimage" data-id="@p.Id" data-url="@Url.Content(@ViewBag.urlImage+p.ImageFullUrl)" data-pice="@p.Price" data-name="@p.Name">
+                    <img src="@Url.Content(@ViewBag.urlImage+p.ImageFullUrl)" alt="Aromatica Sea Daffodil Powder"
+                         class="img-thumbnail" />
+                    <div class="product-overlay"></div>
+                </a>
+            </div>
+        }
+    </div>
+
+    <div class="col-12 preview">
+        <div class="title_gift">
+            <i class="fa fa-television"></i> Preview
+        </div>
+        <div class="box_preview">
+            <ul class="information">
+                <li>
+                    <span class="left">Code:</span>
+                    <span class="right" id="txtName">@Model[0].Id</span>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <span class="left">Expried:</span>
+                            <span class="right">@Model[0].DateModified</span>
+                        </li>
+                        <li class="price">
+                            <span class="left">Price:</span>
+                            <span class="right" id="txtPrice"><b>@Model[0].Price</b></span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="preview_img">
+                <img id="txtimg" src="@Url.Content(@ViewBag.urlImage+Model[0].ImageFullUrl)" alt="" />
+            </div>
+            <ul class="information">
+                <li class="group-add">
+                    <div class="pull-right">
+                        <div class="quantity">
+                            <input type="number" id="Quantity" value="1" class="form-control qty" placeholder="" min="1" max="10" />
+                        </div>
+                        <div class="btnaddtocard">
+                            <input type="hidden" id="txtaddName" value="@Model[0].Name" class="form-control qty" placeholder="" min="1" max="10" />
+                            <input type="hidden" id="txtaddSalePrice" value="@Model[0].Price" class="form-control qty" placeholder="" min="1" max="10" />
+                            <input type="hidden" id="txtaddurl" value="@Url.Content(@ViewBag.urlImage+Model[0].ImageFullUrl)" class="form-control qty" placeholder="" min="1" max="10" />
+                            <input type="hidden" id="txtaddid" value="@Model[0].Id" class="form-control qty" placeholder="" min="1" max="10" />
+                            <button type="submit" title="Add to card" id="add-egift" href="javascript:;" class="btn btn_addtocard">
+                                <span>Add to Card</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="col-12 preview">
+
+        <div class="btnpreview">
+            <a id="place-order" href="javascript:void(0)" class="place-order">Place order</a>
+            <label id="errServiceStep" generated="true" class="has-error" style="display: inline-block;"></label>
+        </div>
+        @*<div id="paypal-button-container"></div>*@
+    </div>
+</div>
